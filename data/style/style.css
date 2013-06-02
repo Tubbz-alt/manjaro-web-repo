@@ -1,0 +1,15 @@
+.tableView_orange {
+	background-color: #FFC34A !important;
+}
+
+.tableView_red {
+	background-color: #FF492F !important;
+}
+
+.content {
+	margin: 10px 10px 10px 10px;
+}
+
+.Wt-tableview {
+    margin: 0 auto;
+}
