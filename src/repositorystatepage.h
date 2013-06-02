@@ -47,7 +47,7 @@ private:
     Wt::WPushButton *buttonRefresh;
 
     void updateRepositoryStates();
-    QString minutesToString(const long minutes);
+    QString minutesToString(long minutes);
     void buttonRefresh_clicked();
 };
 

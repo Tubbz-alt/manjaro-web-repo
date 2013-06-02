@@ -28,7 +28,7 @@ RepositoryStatePage::RepositoryStatePage() :
     /*
      * Table View
      */
-    model = new WStandardItemModel(tableView);
+    model = new WStandardItemModel();
     tableView = new WTableView(this);
     tableView->setSelectable(true);
     tableView->setColumnResizeEnabled(true);
@@ -38,18 +38,6 @@ RepositoryStatePage::RepositoryStatePage() :
     tableView->setEditTriggers(Wt::WAbstractItemView::NoEditTrigger);
 
     updateRepositoryStates();
-
-    int column = 0;
-    tableView->setColumnWidth(column, 400);
-    tableView->setColumnWidth(++column, 150);
-    tableView->setColumnWidth(++column, 100);
-    tableView->setColumnWidth(++column, 150);
-
-    const int branches = model->columnCount() - column - 1;
-    for (int i = 0; i < branches; i++)
-        tableView->setColumnWidth(++column, 100);
-
-    tableView->setWidth(828 + 107 * branches);
 
     addWidget(tableView);
 
@@ -69,7 +57,9 @@ void RepositoryStatePage::updateRepositoryStates() {
     const QList<Global::RepoState> repoStates = Global::getRepoStates();
     model->clear();
 
-    // Set header data
+    /*
+     * Set header data
+     */
     int headerColumn = 0;
     model->insertColumns(0, 4);
     model->setHeaderData(headerColumn, Wt::Horizontal, WString("Mirror"));
@@ -82,7 +72,10 @@ void RepositoryStatePage::updateRepositoryStates() {
         model->setHeaderData(headerColumn, Wt::Horizontal, WString(branches.at(x).toStdString()));
     }
 
-    // Set repo data
+
+    /*
+     * Set repo content
+     */
     for (int i = 0; i < repoStates.size(); i++) {
         const Global::RepoState *repo = &repoStates.at(i);
         int column = 0;
@@ -133,15 +126,33 @@ void RepositoryStatePage::updateRepositoryStates() {
     }
 
     tableView->setModel(model);
+
+
+    /*
+     * Set column width
+     */
+    int column = 0;
+    tableView->setColumnWidth(column, 400);
+    tableView->setColumnWidth(++column, 150);
+    tableView->setColumnWidth(++column, 100);
+    tableView->setColumnWidth(++column, 150);
+
+    for (int i = 0; i < branches.size(); i++)
+        tableView->setColumnWidth(++column, 100);
+
+    tableView->setWidth(828 + 107 * branches.size());
 }
 
 
 
-QString RepositoryStatePage::minutesToString(const long minutes) {
+QString RepositoryStatePage::minutesToString(long minutes) {
     if (minutes < 0)
         return "unknown";
 
-    return QString("%1:%2").arg(QString::number(minutes / 60), QString::number(minutes));
+    const int hours = minutes / 60;
+    minutes -= hours * 60;
+
+    return QString("%1:%2").arg(QString::number(hours), QString::number(minutes));
 }
 
 
