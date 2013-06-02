@@ -52,6 +52,14 @@ RepositoryStatePage::RepositoryStatePage() :
     tableView->setWidth(828 + 107 * branches);
 
     addWidget(tableView);
+
+
+    /*
+     * Refresh Button
+     */
+    buttonRefresh = new Wt::WPushButton("Refresh", this);
+    buttonRefresh->clicked().connect(this, &RepositoryStatePage::buttonRefresh_clicked);
+    addWidget(buttonRefresh);
 }
 
 
@@ -134,4 +142,10 @@ QString RepositoryStatePage::minutesToString(const long minutes) {
         return "unknown";
 
     return QString("%1:%2").arg(QString::number(minutes / 60), QString::number(minutes));
+}
+
+
+
+void RepositoryStatePage::buttonRefresh_clicked() {
+    updateRepositoryStates();
 }

@@ -29,6 +29,7 @@
 #include <Wt/WTableView>
 #include <Wt/WStandardItemModel>
 #include <Wt/WStandardItem>
+#include <Wt/WPushButton>
 
 #include "global.h"
 
@@ -43,9 +44,11 @@ public:
 private:
     WTableView *tableView;
     WStandardItemModel *model;
+    Wt::WPushButton *buttonRefresh;
 
     void updateRepositoryStates();
     QString minutesToString(const long minutes);
+    void buttonRefresh_clicked();
 };
 
 #endif // REPOSITORYSTATEPAGE_H
