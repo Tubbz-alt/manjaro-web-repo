@@ -66,6 +66,7 @@ bool Global::executeCommand(const string & cmd, const string & workingDir) {
 
     if (chdir(workingDir.c_str()) != 0) {
         cerr << "error: failed to chdir!" << endl;
+        close(fd);
         return false;
     }
 
@@ -73,9 +74,11 @@ bool Global::executeCommand(const string & cmd, const string & workingDir) {
 
     if (fchdir(fd) != 0) {
         cerr << "error: failed to fchdir!" << endl;
+        close(fd);
         return false;
     }
 
+    close(fd);
     return WEXITSTATUS(ret) == 0;
 }
 
