@@ -23,14 +23,19 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <map>
+#include <fstream>
 #include <boost/thread.hpp>
-#include <QString>
-#include <QList>
-#include <QMap>
+#include <boost/algorithm/string.hpp>
+#include <boost/filesystem.hpp>
+
+#include <WDateTime>
 
 #include "const.h"
 #include "global.h"
 
+using namespace std;
 using namespace Wt;
 
 
@@ -47,8 +52,8 @@ private:
 
     void run();
     void updateRepositoryStateList();
-    long getRepoLastSync(const QString & url, const QDateTime & currentDateTime);
-    Global::STATE getRepoBranchState(const QString & url, const QString & currentBranchHashState);
+    long getRepoLastSync(const string & url, const WDateTime & currentDateTime);
+    Global::STATE getRepoBranchState(const string & url, const string & currentBranchHashState);
 };
 
 #endif // BACKGROUNDWORKER_H

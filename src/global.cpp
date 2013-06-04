@@ -21,14 +21,9 @@
 
 #include "global.h"
 
-#include <iostream>
-#include <QMutexLocker>
-#include <Wt/WStandardItem>
 
-
-
-QMutex Global::repoStatesMutex;
-QList<Global::RepoState> Global::repoStates;
+boost::mutex Global::repoStatesMutex;
+vector<Global::RepoState> Global::repoStates;
 
 
 
@@ -45,16 +40,16 @@ void Global::cleanup() {
 
 
 
-QList<Global::RepoState> Global::getRepoStates() {
-    QMutexLocker locker(&repoStatesMutex);
+vector<Global::RepoState> Global::getRepoStates() {
+    boost::lock_guard<boost::mutex> lock(repoStatesMutex);
 
     return repoStates;
 }
 
 
 
-void Global::setRepoStates(const QList<Global::RepoState> & repoStates) {
-    QMutexLocker locker(&repoStatesMutex);
+void Global::setRepoStates(const vector<Global::RepoState> & repoStates) {
+    boost::lock_guard<boost::mutex> lock(repoStatesMutex);
 
     Global::repoStates.clear();
     Global::repoStates = repoStates;
@@ -62,9 +57,33 @@ void Global::setRepoStates(const QList<Global::RepoState> & repoStates) {
 
 
 
-std::string Global::getWebContent(const std::string & url)
+bool Global::executeCommand(const string & cmd, const string & workingDir) {
+    int fd = open(".", O_RDONLY);
+    if (fd < 0) {
+        cerr << "error: failed to open fd!" << endl;
+        return false;
+    }
+
+    if (chdir(workingDir.c_str()) != 0) {
+        cerr << "error: failed to chdir!" << endl;
+        return false;
+    }
+
+    int ret = system(cmd.c_str());
+
+    if (fchdir(fd) != 0) {
+        cerr << "error: failed to fchdir!" << endl;
+        return false;
+    }
+
+    return WEXITSTATUS(ret) == 0;
+}
+
+
+
+string Global::getWebContent(const string & url)
 {
-    std::ostringstream oss;
+    ostringstream oss;
 
     if(CURLE_OK == curl_read(url, oss))
         return oss.str();
@@ -84,8 +103,8 @@ size_t Global::data_write(void* buf, size_t size, size_t nmemb, void* userp)
 {
     if(userp)
     {
-        std::ostream& os = *static_cast<std::ostream*>(userp);
-        std::streamsize len = size * nmemb;
+        ostream& os = *static_cast<ostream*>(userp);
+        streamsize len = size * nmemb;
         if(os.write(static_cast<char*>(buf), len))
             return len;
     }
@@ -95,7 +114,7 @@ size_t Global::data_write(void* buf, size_t size, size_t nmemb, void* userp)
 
 
 
-CURLcode Global::curl_read(const std::string& url, std::ostream& os, long timeout)
+CURLcode Global::curl_read(const string & url, ostream& os, long timeout)
 {
     CURLcode code(CURLE_FAILED_INIT);
     CURL* curl = curl_easy_init();

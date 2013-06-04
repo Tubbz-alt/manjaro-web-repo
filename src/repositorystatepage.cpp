@@ -53,8 +53,14 @@ RepositoryStatePage::RepositoryStatePage() :
 
 
 void RepositoryStatePage::updateRepositoryStates() {
-    const QStringList branches = QString(REPO_BRANCHES).split(' ', QString::SkipEmptyParts);
-    const QList<Global::RepoState> repoStates = Global::getRepoStates();
+    // Get branches
+    vector<string> branches;
+    boost::split(branches, REPO_BRANCHES, boost::is_any_of(" "), boost::token_compress_on);
+
+    // Get repo states
+    const vector<Global::RepoState> repoStates = Global::getRepoStates();
+
+    // Clear model
     model->clear();
 
     /*
@@ -67,33 +73,33 @@ void RepositoryStatePage::updateRepositoryStates() {
     model->setHeaderData(++headerColumn, Wt::Horizontal, WString("Protocol"));
     model->setHeaderData(++headerColumn, Wt::Horizontal, WString("Last sync (hh:mm)"));
 
-    for (int x = 0; x < branches.size(); x++) {
+    for (unsigned int x = 0; x < branches.size(); x++) {
         model->insertColumns(++headerColumn, 1);
-        model->setHeaderData(headerColumn, Wt::Horizontal, WString(branches.at(x).toStdString()));
+        model->setHeaderData(headerColumn, Wt::Horizontal, WString(branches.at(x)));
     }
 
 
     /*
      * Set repo content
      */
-    for (int i = 0; i < repoStates.size(); i++) {
+    for (unsigned int i = 0; i < repoStates.size(); i++) {
         const Global::RepoState *repo = &repoStates.at(i);
         int column = 0;
 
         // Mirror
-        WStandardItem *mirrorItem = new WStandardItem(repo->url.toStdString());
+        WStandardItem *mirrorItem = new WStandardItem(repo->url);
         model->setItem(i, column, mirrorItem);
 
         // Country
-        WStandardItem *item = new WStandardItem(repo->country.toStdString());
+        WStandardItem *item = new WStandardItem(repo->country);
         model->setItem(i, ++column, item);
 
         // Protocol
-        item = new WStandardItem(repo->protocol.toStdString());
+        item = new WStandardItem(repo->protocol);
         model->setItem(i, ++column, item);
 
         // Last sync
-        item = new WStandardItem(minutesToString(repo->lastSync).toStdString());
+        item = new WStandardItem(minutesToString(repo->lastSync));
 
         if (repo->lastSync >= 1440 && repo->lastSync < 2880) {  // 1 day
             item->setStyleClass("tableView_orange");
@@ -107,8 +113,13 @@ void RepositoryStatePage::updateRepositoryStates() {
         model->setItem(i, ++column, item);
 
 
-        for (int x = 0; x < branches.size(); x++) {
-            const Global::STATE state = repo->states.value(branches.at(i), Global::STATE_UNKOWN);
+        for (unsigned int x = 0; x < branches.size(); x++) {
+            const string branch = branches.at(i);
+
+            Global::STATE state = Global::STATE_UNKOWN;
+
+            if (repo->states.find(branch) != repo->states.end() )
+                state = repo->states.at(branch);
 
             item = new WStandardItem("unknown");
 
@@ -137,7 +148,7 @@ void RepositoryStatePage::updateRepositoryStates() {
     tableView->setColumnWidth(++column, 100);
     tableView->setColumnWidth(++column, 150);
 
-    for (int i = 0; i < branches.size(); i++)
+    for (unsigned int i = 0; i < branches.size(); i++)
         tableView->setColumnWidth(++column, 100);
 
     tableView->setWidth(828 + 107 * branches.size());
@@ -145,14 +156,14 @@ void RepositoryStatePage::updateRepositoryStates() {
 
 
 
-QString RepositoryStatePage::minutesToString(long minutes) {
+string RepositoryStatePage::minutesToString(long minutes) {
     if (minutes < 0)
         return "unknown";
 
     const int hours = minutes / 60;
     minutes -= hours * 60;
 
-    return QString("%1:%2").arg(QString::number(hours), QString::number(minutes));
+    return to_string(hours) + ":" + to_string(minutes);
 }
 
 

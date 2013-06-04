@@ -57,111 +57,140 @@ void BackgroundWorker::run()
 
 void BackgroundWorker::updateRepositoryStateList()
 {
-    QList<Global::RepoState> repoStates;
-    QMap<QString, QString> currentBranchHashStates;
-    const QStringList branches = QString(REPO_BRANCHES).split(' ', QString::SkipEmptyParts);
-    QDateTime currentDateTime = QDateTime::currentDateTime();
+    vector<Global::RepoState> repoStates;
+    map<string, string> currentBranchHashStates;
+    WDateTime currentDateTime = WDateTime::currentDateTime();
+
+    /* Get branches */
+    vector<string> branches;
+    boost::split(branches, REPO_BRANCHES, boost::is_any_of(" "), boost::token_compress_on);
 
 
     /* Get current branch hash state */
-    for (int i = 0; i < branches.size(); i++) {
-        const QString branch = branches.at(i);
-        QFile file(QString(REPO_PATH) + "/" + branch + "/state");
+    for (unsigned int i = 0; i < branches.size(); i++) {
+        const string branch = branches.at(i);
+        const string filePath = string(REPO_PATH) + "/" + branch + "/state";
 
-        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-            std::cerr << QString("error: failed to open file '%1'!").arg(file.fileName()).toUtf8().data() << std::endl;
+        ifstream file(filePath.c_str(), std::ios::in);
+
+        if (!file.is_open()) {
+            cerr << "error: failed to open file '" << filePath << "'!" << endl;
             return;
         }
 
-        QTextStream in(&file);
+        string line;
 
-        while (!in.atEnd()) {
-            QString line = in.readLine().split('#', QString::KeepEmptyParts).first().trimmed();
+        while (!file.eof()) {
+            getline(file, line);
 
-            if (!line.startsWith("state") || !line.contains('='))
+            size_t pos = line.find_first_of('#');
+            if (pos != string::npos)
+                line.erase(pos);
+
+            boost::trim(line);
+
+            if (!boost::starts_with(line, "state") || string::npos == line.find("="))
                 continue;
 
-            currentBranchHashStates[branch] = line.split('=', QString::SkipEmptyParts).last().trimmed();
+            line = line.substr(line.find('=') + 1, string::npos);
+            boost::trim(line);
+
+            currentBranchHashStates[branch] = line;
         }
+
+        file.close();
     }
 
 
     /* Get git source */
-    QProcess process;
-    process.setProcessChannelMode(QProcess::MergedChannels);
+    string cmd, workingDir;
+    string tmpPath = string(TMP_PATH) + "/git";;
 
-    QString tmpPath = QString(TMP_PATH) + "/git";
-    QStringList args;
-
-    if (QDir(tmpPath).exists()) {
-        process.setWorkingDirectory(tmpPath + "/" + GIT_NAME);
-        args << "pull" << "origin" << "master";
+    if (boost::filesystem::exists(tmpPath)) {
+        workingDir = tmpPath + "/" + string(GIT_NAME);
+        cmd = "git pull origin master";
     }
     else {
-        QDir().mkpath(tmpPath);
-        process.setWorkingDirectory(tmpPath);
-        args << "clone" << GIT_URL;
+        if (!boost::filesystem::create_directories(tmpPath)) {
+            cerr << "error: failed to create git tmp path!" << endl;
+            return;
+        }
+
+        workingDir = tmpPath;
+        cmd = "git clone " + string(GIT_URL);
     }
 
-    process.start("git", args);
-
-    if (!process.waitForFinished()) {
-        std::cerr << "error: failed to start git process" << std::endl;
-        return;
-    }
-
-    if (process.exitCode() != 0) {
-        std::cerr << "error: git process failed" << std::endl;
-        std::cerr << "message: " << QString(process.readAll()).toUtf8().data() << std::endl;
+    if (!Global::executeCommand(cmd, workingDir)) {
+        cerr << "error: git process failed" << endl;
         return;
     }
 
 
     /* Get mirrors and time */
-    const QStringList files = QDir(tmpPath + "/" + MIRRORS_PATH).entryList(QDir::Files | QDir::NoDotAndDotDot);
-
-    for (int i = 0; i < files.size(); i++) {
-        const QString filePath = tmpPath + "/" + MIRRORS_PATH + "/" + files.at(i);
-
-        QFile file(filePath);
-        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-            std::cerr << QString("error: failed to open file '%1'!").arg(filePath).toUtf8().data() << std::endl;
+    boost::filesystem::directory_iterator end_itr;
+    for(boost::filesystem::directory_iterator i(tmpPath + "/" + MIRRORS_PATH); i != end_itr; ++i)
+    {
+        // Skip if not a file
+        if(!boost::filesystem::is_regular_file(i->status()))
             continue;
+
+        ifstream file(i->path().string().c_str(), std::ios::in);
+        if (!file.is_open()) {
+            cerr << "error: failed to open file '" << i->path().string() << "'!" << endl;
+            return;
         }
 
-        QString country = "unknown";
-        QTextStream in(&file);
+        string country = "unknown";
+        string line;
 
-        while (!in.atEnd()) {
-            QString line = in.readLine().split('#', QString::KeepEmptyParts).first().trimmed();
-            if (line.isEmpty())
-                continue;
+        while (!file.eof()) {
+            getline(file, line);
 
-            if (line.startsWith('[') && line.endsWith(']')) {
-                country = line.mid(1, line.length() - 2);
+            size_t pos = line.find_first_of('#');
+            if (pos != string::npos)
+                line.erase(pos);
+
+            boost::trim(line);
+
+            if (boost::starts_with(line, "[") && boost::ends_with(line, "]")) {
+                country = line.substr(1, line.length() - 2);
             }
-            else if (line.startsWith("Server") && line.contains('=')) {
+            else if (boost::starts_with(line, "Server") && string::npos != line.find("=")) {
+                if (string::npos == line.find("dacentec"))
+                    continue;
+
+                line = line.substr(line.find('=') + 1, string::npos);
+                boost::trim(line);
+
                 Global::RepoState repo;
                 repo.country = country;
-                repo.url = line.split('=', QString::SkipEmptyParts).last().trimmed();
+                repo.url = line;
 
-                for (int i = 0; i < branches.size(); i++) {
-                    const QString branch = branches.at(i);
-                    repo.states[branch] = getRepoBranchState(QString(repo.url).replace("$branch/$repo/$arch", branch + "/state"),
-                                                             currentBranchHashStates.value(branch, ""));
+                for (unsigned int i = 0; i < branches.size(); i++) {
+                    const string branch = branches.at(i);
+
+                    if (currentBranchHashStates.find(branch) == currentBranchHashStates.end() ) {
+                        repo.states[branch] = Global::STATE_UNKOWN;
+                        continue;
+                    }
+
+                    string url = repo.url;
+                    boost::replace_last(url, "$branch/$repo/$arch", branch + "/state");
+
+                    repo.states[branch] = getRepoBranchState(url, currentBranchHashStates.at(branch));
                 }
 
-                repo.url = repo.url.mid(0, repo.url.indexOf("/$branch"));
+                repo.url = repo.url.substr(0, repo.url.find("/$branch"));
                 repo.lastSync = getRepoLastSync(repo.url + "/state", currentDateTime);
 
-                if (repo.url.startsWith("http://"))
+                if (boost::starts_with(repo.url, "http://"))
                     repo.protocol = "http";
-                else if (repo.url.startsWith("ftp://"))
+                else if (boost::starts_with(repo.url, "ftp://"))
                     repo.protocol = "ftp";
                 else
                     repo.protocol = "unknown";
 
-                repoStates.append(repo);
+                repoStates.push_back(repo);
             }
         }
 
@@ -173,23 +202,31 @@ void BackgroundWorker::updateRepositoryStateList()
 
 
 
-long BackgroundWorker::getRepoLastSync(const QString & url, const QDateTime & currentDateTime) {
-    QStringList split = QString::fromStdString(Global::getWebContent(url.toStdString())).split('\n', QString::SkipEmptyParts);
-    QString repoDateTimeStr;
+long BackgroundWorker::getRepoLastSync(const string & url, const WDateTime & currentDateTime)
+{
+    vector<string> split;
+    string webContent= Global::getWebContent(url);
+    boost::trim(webContent);
+    boost::split(split, webContent, boost::is_any_of("\n"), boost::token_compress_on);
 
-    for (int i = 0; i < split.size(); i++) {
-        QString line = split.at(i).split('#', QString::KeepEmptyParts).first().trimmed();
+    string repoDateTimeStr;
 
-        if (!line.startsWith("date") || !line.contains('='))
+    for (unsigned int i = 0; i < split.size(); i++) {
+        string line = split.at(i);
+        line = line.substr(0, line.find('#'));
+        boost::trim(line);
+
+        if (!boost::starts_with(line, "date") || string::npos == line.find("="))
             continue;
 
-        repoDateTimeStr = line.split('=', QString::SkipEmptyParts).last().trimmed();
+        repoDateTimeStr = line.substr(line.find('=') + 1, string::npos);
+        boost::trim(repoDateTimeStr);
     }
 
-    if (repoDateTimeStr.isEmpty())
+    if (repoDateTimeStr.empty())
         return -1;
 
-    QDateTime repoDateTime = QDateTime::fromString(repoDateTimeStr, Qt::ISODate);
+    WDateTime repoDateTime = WDateTime::fromString(repoDateTimeStr, "yyyy-MM-dd'T'hh:mm:ss");
 
     if (repoDateTime > currentDateTime)
         return -1;
@@ -199,21 +236,28 @@ long BackgroundWorker::getRepoLastSync(const QString & url, const QDateTime & cu
 
 
 
-Global::STATE BackgroundWorker::getRepoBranchState(const QString & url, const QString & currentBranchHashState)
+Global::STATE BackgroundWorker::getRepoBranchState(const string & url, const string & currentBranchHashState)
 {
-    QStringList split = QString::fromStdString(Global::getWebContent(url.toStdString())).split('\n', QString::SkipEmptyParts);
-    QString hashState;
+    vector<string> split;
+    string webContent= Global::getWebContent(url);
+    boost::trim(webContent);
+    boost::split(split, webContent, boost::is_any_of("\n"), boost::token_compress_on);
 
-    for (int i = 0; i < split.size(); i++) {
-        QString line = split.at(i).split('#', QString::KeepEmptyParts).first().trimmed();
+    string hashState;
 
-        if (!line.startsWith("state") || !line.contains('='))
+    for (unsigned int i = 0; i < split.size(); i++) {
+        string line = split.at(i);
+        line = line.substr(0, line.find('#'));
+        boost::trim(line);
+
+        if (!boost::starts_with(line, "state") || string::npos == line.find("="))
             continue;
 
-        hashState = line.split('=', QString::SkipEmptyParts).last().trimmed();
+        hashState = line.substr(line.find('=') + 1, string::npos);
+        boost::trim(hashState);
     }
 
-    if (hashState.isEmpty())
+    if (hashState.empty())
         return Global::STATE_UNKOWN;
     else if (hashState == currentBranchHashState)
         return Global::STATE_UP_TO_DATE;

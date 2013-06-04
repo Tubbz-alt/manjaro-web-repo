@@ -21,19 +21,23 @@
 #ifndef REPOSITORYSTATEPAGE_H
 #define REPOSITORYSTATEPAGE_H
 
-#include <QString>
-#include <Wt/WString>
-#include <Wt/WContainerWidget>
-#include <Wt/WApplication>
-#include <Wt/WStandardItemModel>
-#include <Wt/WTableView>
-#include <Wt/WStandardItemModel>
-#include <Wt/WStandardItem>
-#include <Wt/WPushButton>
+#include <string>
+#include <vector>
+#include <boost/algorithm/string.hpp>
+
+#include <WString>
+#include <WContainerWidget>
+#include <WApplication>
+#include <WStandardItemModel>
+#include <WTableView>
+#include <WStandardItemModel>
+#include <WStandardItem>
+#include <WPushButton>
 
 #include "global.h"
 
 using namespace Wt;
+using namespace std;
 
 
 class RepositoryStatePage : public WContainerWidget
@@ -47,7 +51,7 @@ private:
     Wt::WPushButton *buttonRefresh;
 
     void updateRepositoryStates();
-    QString minutesToString(long minutes);
+    string minutesToString(long minutes);
     void buttonRefresh_clicked();
 };
 

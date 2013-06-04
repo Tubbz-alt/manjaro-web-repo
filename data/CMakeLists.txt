@@ -1,0 +1,3 @@
+INSTALL(DIRECTORY "style"
+	DESTINATION "share/${PROJECT_NAME}"
+)

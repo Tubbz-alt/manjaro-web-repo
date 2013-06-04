@@ -1,5 +1,6 @@
 *~
 *.pro.user
+CMakeLists.txt.user
 build
 build-debug
 

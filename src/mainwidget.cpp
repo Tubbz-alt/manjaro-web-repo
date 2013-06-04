@@ -20,12 +20,12 @@
 
 #include "mainwidget.h"
 
-#include <Wt/WHBoxLayout>
-#include <Wt/WMenu>
-#include <Wt/WNavigationBar>
-#include <Wt/WStackedWidget>
-#include <Wt/WText>
-#include <Wt/WVBoxLayout>
+#include <WHBoxLayout>
+#include <WMenu>
+#include <WNavigationBar>
+#include <WStackedWidget>
+#include <WText>
+#include <WVBoxLayout>
 
 #include "repositorystatepage.h"
 

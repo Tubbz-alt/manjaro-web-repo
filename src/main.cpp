@@ -20,17 +20,17 @@
 
 #include <iostream>
 
-#include <Wt/WApplication>
-#include <Wt/WEnvironment>
-#include <Wt/WHBoxLayout>
-#include <Wt/WBootstrapTheme>
-#include <Wt/WCssTheme>
+#include <WApplication>
+#include <WEnvironment>
+#include <WHBoxLayout>
+#include <WBootstrapTheme>
+#include <WCssTheme>
 
 #include "global.h"
 #include "mainwidget.h"
 #include "backgroundworker.h"
 
-
+using namespace std;
 using namespace Wt;
 
 
@@ -40,9 +40,9 @@ WApplication *createApplication(const WEnvironment& env)
     Wt::WApplication* app = new Wt::WApplication(env);
 
     if (app->appRoot().empty())
-        std::cerr << "warning: the approot looks suspect!" << std::endl;
+        cerr << "warning: the approot looks suspect!" << endl;
 
-    const std::string *theme = env.getParameter("theme");
+    const string *theme = env.getParameter("theme");
     if (theme)
         app->setTheme(new Wt::WCssTheme(*theme));
     else

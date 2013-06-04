@@ -21,7 +21,7 @@
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 
-#include <Wt/WContainerWidget>
+#include <WContainerWidget>
 
 using namespace Wt;
 
