@@ -114,7 +114,7 @@ void RepositoryStatePage::updateRepositoryStates() {
 
 
         for (unsigned int x = 0; x < branches.size(); x++) {
-            const string branch = branches.at(i);
+            const string branch = branches.at(x);
 
             Global::STATE state = Global::STATE_UNKOWN;
 

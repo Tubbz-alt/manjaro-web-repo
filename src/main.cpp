@@ -63,18 +63,11 @@ WApplication *createApplication(const WEnvironment& env)
 
 int main(int argc, char **argv)
 {
-    // Initialize
-    Global::init();
-
     // Start our background worker
     BackgroundWorker worker;
     worker.start();
 
     // Main Application
     int ret = WRun(argc, argv, &createApplication);
-
-    // Cleanup;
-    Global::cleanup();
-
     return ret;
 }

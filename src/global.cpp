@@ -125,6 +125,7 @@ CURLcode Global::curl_read(const string & url, ostream& os, long timeout)
     if(curl)
     {
         if(CURLE_OK == (code = curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, &data_write))
+        && CURLE_OK == (code = curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1L))
         && CURLE_OK == (code = curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 1L))
         && CURLE_OK == (code = curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L))
         && CURLE_OK == (code = curl_easy_setopt(curl, CURLOPT_FILE, &os))
@@ -138,7 +139,6 @@ CURLcode Global::curl_read(const string & url, ostream& os, long timeout)
 
     return code;
 }
-
 
 
 

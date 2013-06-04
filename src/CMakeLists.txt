@@ -3,11 +3,11 @@ find_package(Boost COMPONENTS system filesystem thread signals random regex prog
 
 # Wt
 SET(WT_LIBRARIES wt)
-SET(WT_INCLUDE_DIR ${CMAKE_INSTALL_PREFIX}/include/Wt)
+SET(WT_INCLUDE_DIR /usr/include/Wt)
 
 # Curl
 SET(CURL_LIBRARIES curl)
-SET(CURL_INCLUDE_DIR ${CMAKE_INSTALL_PREFIX}/include/curl)
+SET(CURL_INCLUDE_DIR /usr/include/curl)
 
 # Project
 include_directories(${Boost_INCLUDE_DIR} ${WT_INCLUDE_DIR} ${CURL_INCLUDE_DIR})

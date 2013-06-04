@@ -28,5 +28,6 @@
 #define MIRRORS_PATH "pacman-mirrors/data/mirrors"
 #define REPO_PATH "/var/repo/repo"
 #define REPO_BRANCHES "stable testing unstable"
+#define DOWNLOAD_CMD "curl -s -L --connect-timeout 30"
 
 #endif // CONST_H
