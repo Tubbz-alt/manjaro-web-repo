@@ -156,9 +156,6 @@ void BackgroundWorker::updateRepositoryStateList()
                 country = line.substr(1, line.length() - 2);
             }
             else if (boost::starts_with(line, "Server") && string::npos != line.find("=")) {
-                if (string::npos == line.find("dacentec"))
-                    continue;
-
                 line = line.substr(line.find('=') + 1, string::npos);
                 boost::trim(line);
 
