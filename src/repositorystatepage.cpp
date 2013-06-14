@@ -107,15 +107,15 @@ void RepositoryStatePage::updateRepositoryStates() {
         STATE mirrorItemState = STATE_NORMAL;
         item = new WStandardItem(minutesToString(repo->lastSync));
 
-        if (repo->lastSync >= 240 && repo->lastSync < 420) {          // 4 hours
+        if (repo->lastSync < 240) {          // 4 hours
             mirrorItemState = STATE_YELLOW;
             item->setStyleClass("tableView_yellow");
         }
-        else if (repo->lastSync >= 420 && repo->lastSync < 1440) {     // 7 hours
+        else if (repo->lastSync >= 240 && repo->lastSync < 420) {     // 7 hours
             mirrorItemState = STATE_ORANGE;
             item->setStyleClass("tableView_orange");
         }
-        else if (repo->lastSync >= 1440) {                             // 1 days
+        else if (repo->lastSync >= 420) {
             mirrorItemState = STATE_RED;
             item->setStyleClass("tableView_red");
         }
