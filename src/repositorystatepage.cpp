@@ -28,8 +28,8 @@ RepositoryStatePage::RepositoryStatePage() :
     /*
      * Table View
      */
-    model = new WStandardItemModel();
     tableView = new WTableView(this);
+    model = new WStandardItemModel(this);
     tableView->setSelectable(true);
     tableView->setColumnResizeEnabled(true);
     tableView->setAlternatingRowColors(true);
@@ -82,6 +82,11 @@ void RepositoryStatePage::updateRepositoryStates() {
     /*
      * Set repo content
      */
+    if (repoStates.empty()) {
+        WStandardItem *mirrorItem = new WStandardItem("Loading repository states...");
+        model->setItem(0, 0, mirrorItem);
+    }
+
     for (unsigned int i = 0; i < repoStates.size(); i++) {
         const Global::RepoState *repo = &repoStates.at(i);
         int column = 0;
@@ -99,15 +104,20 @@ void RepositoryStatePage::updateRepositoryStates() {
         model->setItem(i, ++column, item);
 
         // Last sync
+        STATE mirrorItemState = STATE_NORMAL;
         item = new WStandardItem(minutesToString(repo->lastSync));
 
-        if (repo->lastSync >= 1440 && repo->lastSync < 2880) {  // 1 day
-            item->setStyleClass("tableView_orange");
-            mirrorItem->setStyleClass("tableView_orange");
+        if (repo->lastSync >= 240 && repo->lastSync < 420) {          // 4 hours
+            mirrorItemState = STATE_YELLOW;
+            item->setStyleClass("tableView_yellow");
         }
-        else if (repo->lastSync >= 2880) {                      // 2 days
+        else if (repo->lastSync >= 420 && repo->lastSync < 1440) {     // 7 hours
+            mirrorItemState = STATE_ORANGE;
+            item->setStyleClass("tableView_orange");
+        }
+        else if (repo->lastSync >= 1440) {                             // 1 days
+            mirrorItemState = STATE_RED;
             item->setStyleClass("tableView_red");
-            mirrorItem->setStyleClass("tableView_red");
         }
 
         model->setItem(i, ++column, item);
@@ -128,12 +138,25 @@ void RepositoryStatePage::updateRepositoryStates() {
             }
             else if (state == Global::STATE_OUT_OF_DATE) {
                 item->setText("out-of-date");
-                item->setStyleClass("tableView_red");
-                mirrorItem->setStyleClass("tableView_red");
+
+                if (mirrorItemState == STATE_YELLOW)
+                    item->setStyleClass("tableView_yellow");
+                else if (mirrorItemState == STATE_ORANGE)
+                    item->setStyleClass("tableView_orange");
+                else if (mirrorItemState == STATE_RED)
+                    item->setStyleClass("tableView_red");
             }
 
             model->setItem(i, ++column, item);
         }
+
+
+        if (mirrorItemState == STATE_YELLOW)
+            mirrorItem->setStyleClass("tableView_yellow");
+        else if (mirrorItemState == STATE_ORANGE)
+            mirrorItem->setStyleClass("tableView_orange");
+        else if (mirrorItemState == STATE_RED)
+            mirrorItem->setStyleClass("tableView_red");
     }
 
     tableView->setModel(model);
@@ -163,7 +186,21 @@ string RepositoryStatePage::minutesToString(long minutes) {
     const int hours = minutes / 60;
     minutes -= hours * 60;
 
-    return to_string(hours) + ":" + to_string(minutes);
+    string final;
+
+    if (hours < 10)
+        final = "0" + to_string(hours);
+    else
+        final = to_string(hours);
+
+    final += ":";
+
+    if (minutes < 10)
+        final += "0" + to_string(minutes);
+    else
+        final += to_string(minutes);
+
+    return final;
 }
 
 

@@ -46,6 +46,13 @@ public:
     RepositoryStatePage();
 
 private:
+    enum STATE {
+        STATE_NORMAL,
+        STATE_YELLOW,
+        STATE_ORANGE,
+        STATE_RED
+    };
+
     WTableView *tableView;
     WStandardItemModel *model;
     Wt::WPushButton *buttonRefresh;

@@ -15,7 +15,8 @@ link_directories(${Boost_LIBRARY_DIR})
 aux_source_directory(. SRC_FILES)
 add_executable(${PROJECT_NAME} ${SRC_FILES})
 target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} ${WT_CONNECTOR} ${WT_LIBRARIES} ${CURL_LIBRARIES})
+set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_NAME}.wt)
 
-INSTALL(TARGETS manjaro-web-repo
+INSTALL(TARGETS ${PROJECT_NAME}
   RUNTIME DESTINATION bin
 )
