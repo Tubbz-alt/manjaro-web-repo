@@ -23,7 +23,7 @@
 #define CONST_H
 
 #define TMP_PATH "/tmp/manjaro-web-repo_tmp"
-#define GIT_URL "http://git.manjaro.org/web/manjaro-web-repo.git"
+#define GIT_URL "http://git.manjaro.org/core/pacman-mirrors.git"
 #define GIT_NAME "pacman-mirrors"
 #define MIRRORS_PATH "pacman-mirrors/data/mirrors"
 #define REPO_PATH "/var/repo/repo"
