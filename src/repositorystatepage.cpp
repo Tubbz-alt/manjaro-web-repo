@@ -139,12 +139,22 @@ void RepositoryStatePage::updateRepositoryStates() {
             else if (state == Global::STATE_OUT_OF_DATE) {
                 item->setText("out-of-date");
 
-                if (mirrorItemState == STATE_NORMAL || mirrorItemState == STATE_YELLOW)
+                if (mirrorItemState == STATE_NORMAL || mirrorItemState == STATE_YELLOW) {
+                    // Set the mirrorItemState in case if it is STATE_NORMAL
+                    mirrorItemState = STATE_YELLOW;
                     item->setStyleClass("tableView_yellow");
-                else if (mirrorItemState == STATE_ORANGE)
+                }
+                else if (mirrorItemState == STATE_ORANGE) {
                     item->setStyleClass("tableView_orange");
-                else
+                }
+                else {
                     item->setStyleClass("tableView_red");
+                }
+            }
+            else if (state == Global::STATE_UNKOWN) {
+                // Set red color
+                mirrorItemState = STATE_RED;
+                item->setStyleClass("tableView_red");
             }
 
             model->setItem(i, ++column, item);
