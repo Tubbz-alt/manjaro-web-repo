@@ -89,6 +89,7 @@ void RepositoryStatePage::updateRepositoryStates() {
 
     for (unsigned int i = 0; i < repoStates.size(); i++) {
         const Global::RepoState *repo = &repoStates.at(i);
+        STATE mirrorItemState = STATE_NORMAL;
         int column = 0;
 
         // Mirror
@@ -104,18 +105,17 @@ void RepositoryStatePage::updateRepositoryStates() {
         model->setItem(i, ++column, item);
 
         // Last sync
-        STATE mirrorItemState = STATE_NORMAL;
         item = new WStandardItem(minutesToString(repo->lastSync));
 
-        if (repo->lastSync < 240) {          // 4 hours
+        if (repo->lastSync >= 120 && repo->lastSync < 240) {            // 2 - 4 hours
             mirrorItemState = STATE_YELLOW;
             item->setStyleClass("tableView_yellow");
         }
-        else if (repo->lastSync >= 240 && repo->lastSync < 420) {     // 7 hours
+        else if (repo->lastSync >= 240 && repo->lastSync < 420) {       // 4 - 7 hours
             mirrorItemState = STATE_ORANGE;
             item->setStyleClass("tableView_orange");
         }
-        else if (repo->lastSync >= 420) {
+        else if (repo->lastSync >= 420) {                               // Above 7 hours
             mirrorItemState = STATE_RED;
             item->setStyleClass("tableView_red");
         }
@@ -139,11 +139,11 @@ void RepositoryStatePage::updateRepositoryStates() {
             else if (state == Global::STATE_OUT_OF_DATE) {
                 item->setText("out-of-date");
 
-                if (mirrorItemState == STATE_YELLOW)
+                if (mirrorItemState == STATE_NORMAL || mirrorItemState == STATE_YELLOW)
                     item->setStyleClass("tableView_yellow");
                 else if (mirrorItemState == STATE_ORANGE)
                     item->setStyleClass("tableView_orange");
-                else if (mirrorItemState == STATE_RED)
+                else
                     item->setStyleClass("tableView_red");
             }
 
