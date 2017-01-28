@@ -3,8 +3,8 @@
         "http://mirror.is.co.za/mirrors/manjaro.org/$branch/$repo/$arch"
     ],
     "Australia": [
-        "http://mirror.ventraip.net.au/Manjaro/$branch/$repo/$arch"
-        "http://manjaro.uberglobalmirror.com/$branch/$repo/$arch"
+        "http://mirror.ventraip.net.au/Manjaro/$branch/$repo/$arch",
+        "http://manjaro.uberglobalmirror.com/$branch/$repo/$arch",
         "http://manjaro.mirror.serversaustralia.com.au/$branch/$repo/$arch"
     ],
     "Austria": [
@@ -14,28 +14,28 @@
         "http://mirror.datacenter.by/pub/mirrors/manjaro/$branch/$repo/$arch"
     ],
     "Belgium": [
-        "http://ftp.belnet.be/manjaro/$branch/$repo/$arch"
+        "http://ftp.belnet.be/manjaro/$branch/$repo/$arch",
         "http://manjaro.cu.be/$branch/$repo/$arch"
     ],
     "Brasil": [
         "http://linorg.usp.br/manjaro/$branch/$repo/$arch"
     ],
     "Bulgaria": [
-        "http://mirrors.netix.net/manjaro/$branch/$repo/$arch"
-        "http://manjaro.ipacct.com/manjaro/$branch/$repo/$arch"
+        "http://mirrors.netix.net/manjaro/$branch/$repo/$arch",
+        "http://manjaro.ipacct.com/manjaro/$branch/$repo/$arch",
         "http://manjaro.telecoms.bg/$branch/$repo/$arch"
     ],
     "Canada": [
-        "http://manjaro.cybr.ca/$branch/$repo/$arch"
+        "http://manjaro.cybr.ca/$branch/$repo/$arch",
         "http://ca.mirror.babylon.network/manjaro/$branch/$repo/$arch"
     ],
     "Chile": [
-        "http://manjaro.dcc.uchile.cl/$branch/$repo/$arch"
+        "http://manjaro.dcc.uchile.cl/$branch/$repo/$arch",
         "http://doge.ing.puc.cl/Mirrors/Manjaro/$branch/$repo/$arch"
     ],
     "China": [
-        "http://mirrors.ustc.edu.cn/manjaro/$branch/$repo/$arch"
-        "http://ftp.cuhk.edu.hk/pub/Linux/manjaro/$branch/$repo/$arch"
+        "http://mirrors.ustc.edu.cn/manjaro/$branch/$repo/$arch",
+        "http://ftp.cuhk.edu.hk/pub/Linux/manjaro/$branch/$repo/$arch",
         "http://mirrors.tuna.tsinghua.edu.cn/manjaro/$branch/$repo/$arch"
     ],
     "Colombia": [
@@ -48,29 +48,29 @@
         "http://mirror.dkm.cz/manjaro/$branch/$repo/$arch"
     ],
     "Denmark": [
-        "http://mirrors.dotsrc.org/manjaro/$branch/$repo/$arch"
+        "http://mirrors.dotsrc.org/manjaro/$branch/$repo/$arch",
         "http://www.uex.dk/repos/manjaro/$branch/$repo/$arch"
     ],
     "Ecuador": [
-        "http://mirror.cedia.org.ec/manjaro/$branch/$repo/$arch"
-        "http://mirror.uta.edu.ec/manjaro/$branch/$repo/$arch"
+        "http://mirror.cedia.org.ec/manjaro/$branch/$repo/$arch",
+        "http://mirror.uta.edu.ec/manjaro/$branch/$repo/$arch",
         "http://mirror.espoch.edu.ec/manjaro/$branch/$repo/$arch"
     ],
     "France": [
-        "http://manjarolinux.polymorf.fr/$branch/$repo/$arch"
-        "http://mirror.lignux.com/manjaro/$branch/$repo/$arch"
-        "http://ftp.free.org/mirrors/repo.manjaro.org/repos/$branch/$repo/$arch"
+        "http://manjarolinux.polymorf.fr/$branch/$repo/$arch",
+        "http://mirror.lignux.com/manjaro/$branch/$repo/$arch",
+        "http://ftp.free.org/mirrors/repo.manjaro.org/repos/$branch/$repo/$arch",
         "http://fr.mirror.babylon.network/manjaro/$branch/$repo/$arch"
     ],
     "Germany": [
-        "http://mirror.ragenetwork.de/manjaro/$branch/$repo/$arch"
-        "http://ftp.halifax.rwth-aachen.de/manjaro/$branch/$repo/$arch"
-        "http://ftp.tu-chemnitz.de/pub/linux/manjaro/$branch/$repo/$arch"
-        "http://mirror.netzspielplatz.de/manjaro/packages/$branch/$repo/$arch"
-        "http://mirror.netcologne.de/manjaro/$branch/$repo/$arch"
-        "http://repo.rhindon.net/manjaro/$branch/$repo/$arch"
-        "http://mirrors.cicku.me/manjaro/$branch/$repo/$arch"
-        "http://repo.stdout.net/manjaro/$branch/$repo/$arch"
+        "http://mirror.ragenetwork.de/manjaro/$branch/$repo/$arch",
+        "http://ftp.halifax.rwth-aachen.de/manjaro/$branch/$repo/$arch",
+        "http://ftp.tu-chemnitz.de/pub/linux/manjaro/$branch/$repo/$arch",
+        "http://mirror.netzspielplatz.de/manjaro/packages/$branch/$repo/$arch",
+        "http://mirror.netcologne.de/manjaro/$branch/$repo/$arch",
+        "http://repo.rhindon.net/manjaro/$branch/$repo/$arch",
+        "http://mirrors.cicku.me/manjaro/$branch/$repo/$arch",
+        "http://repo.stdout.net/manjaro/$branch/$repo/$arch",
     ],
     "Greece": [
         "http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$branch/$repo/$arch"
@@ -79,25 +79,25 @@
         "http://mirror.infotronik.hu/mirrors/pub/manjaro/$branch/$repo/$arch"
     ],
     "Indonesia": [
-        "http://kambing.ui.ac.id/manjaro/$branch/$repo/$arch"
-        "http://kartolo.sby.datautama.net.id/manjaro/$branch/$repo/$arch"
+        "http://kambing.ui.ac.id/manjaro/$branch/$repo/$arch",
+        "http://kartolo.sby.datautama.net.id/manjaro/$branch/$repo/$arch",
         "http://jaran.undip.ac.id/manjaro/$branch/$repo/$arch"
     ],
     "Ireland": [
         "http://ftp.heanet.ie/mirrors/manjaro/$branch/$repo/$arch"
     ],
     "Italy": [
-        "http://manjaro.mirror.garr.it/mirrors/manjaro/$branch/$repo/$arch"
-        "http://ba.mirror.garr.it/mirrors/manjaro/$branch/$repo/$arch"
+        "http://manjaro.mirror.garr.it/mirrors/manjaro/$branch/$repo/$arch",
+        "http://ba.mirror.garr.it/mirrors/manjaro/$branch/$repo/$arch",
         "http://ct.mirror.garr.it/mirrors/manjaro/$branch/$repo/$arch"
     ],
     "Japan": [
-        "http://ftp.tsukuba.wide.ad.jp/Linux/manjaro/$branch/$repo/$arch"
+        "http://ftp.tsukuba.wide.ad.jp/Linux/manjaro/$branch/$repo/$arch",
         "http://ftp.riken.jp/Linux/manjaro/$branch/$repo/$arch"
     ],
     "Netherlands": [
-        "http://ftp.nluug.nl/pub/os/Linux/distr/manjaro/$branch/$repo/$arch"
-        "http://ftp.snt.utwente.nl/pub/linux/manjaro/$branch/$repo/$arch"
+        "http://ftp.nluug.nl/pub/os/Linux/distr/manjaro/$branch/$repo/$arch",
+        "http://ftp.snt.utwente.nl/pub/linux/manjaro/$branch/$repo/$arch",
         "http://nl.mirror.babylon.network/manjaro/$branch/$repo/$arch"
     ],
     "Philippines": [
@@ -107,22 +107,22 @@
         "http://mirror.chmuri.net/manjaro/$branch/$repo/$arch"
     ],
     "Portugal": [
-        "http://ftp.dei.uc.pt/pub/linux/manjaro/$branch/$repo/$arch"
+        "http://ftp.dei.uc.pt/pub/linux/manjaro/$branch/$repo/$arch",
         "http://repo.barata.website/$branch/$repo/$arch"
     ],
     "Romania": [
-        "http://mirrors.serverhost.ro/manjaro/packages/$branch/$repo/$arch"
+        "http://mirrors.serverhost.ro/manjaro/packages/$branch/$repo/$arch",
         "http://ftp.lug.ro/manjaro/$branch/$repo/$arch"
     ],
     "Russia": [
-        "http://mirror.yandex.ru/mirrors/manjaro/$branch/$repo/$arch"
+        "http://mirror.yandex.ru/mirrors/manjaro/$branch/$repo/$arch",
         "ftp://kibo.remi.lu/pub/$branch/$repo/$arch"
     ],
     "Singapore": [
         "http://download.nus.edu.sg/mirror/manjaro/$branch/$repo/$arch"
     ],
     "Sweden": [
-        "http://ftp.lysator.liu.se/pub/manjaro/$branch/$repo/$arch"
+        "http://ftp.lysator.liu.se/pub/manjaro/$branch/$repo/$arch",
         "http://mirror.zetup.net/manjaro/$branch/$repo/$arch"
     ],
     "Taiwan": [
@@ -132,18 +132,18 @@
         "http://ftp.linux.org.tr/manjaro/$branch/$repo/$arch"
     ],
     "United_Kingdom": [
-        "http://repo.manjaro.org.uk/$branch/$repo/$arch"
-        "http://www.mirrorservice.org/sites/repo.manjaro.org/repos/$branch/$repo/$arch"
-        "http://mirror.catn.com/pub/manjaro/$branch/$repo/$arch"
+        "http://repo.manjaro.org.uk/$branch/$repo/$arch",
+        "http://www.mirrorservice.org/sites/repo.manjaro.org/repos/$branch/$repo/$arch",
+        "http://mirror.catn.com/pub/manjaro/$branch/$repo/$arch",
         "http://manjaro.mirrors.uk2.net/$branch/$repo/$arch"
     ],
     "United_States": [
-        "http://mirror.dacentec.com/manjaro/$branch/$repo/$arch"
-        "http://mirror.jmu.edu/manjaro/$branch/$repo/$arch"
-        "http://mirror.solarvps.com/manjaro/$branch/$repo/$arch"
-        "http://mirror.nexcess.net/manjaro/$branch/$repo/$arch"
-        "http://distro.ibiblio.org/manjaro/$branch/$repo/$arch"
-        "http://mirror.clarkson.edu/manjaro/$branch/$repo/$arch"
+        "http://mirror.dacentec.com/manjaro/$branch/$repo/$arch",
+        "http://mirror.jmu.edu/manjaro/$branch/$repo/$arch",
+        "http://mirror.solarvps.com/manjaro/$branch/$repo/$arch",
+        "http://mirror.nexcess.net/manjaro/$branch/$repo/$arch",
+        "http://distro.ibiblio.org/manjaro/$branch/$repo/$arch",
+        "http://mirror.clarkson.edu/manjaro/$branch/$repo/$arch",
         "http://mirrors.ocf.berkeley.edu/manjaro/$branch/$repo/$arch"
     ],
     "Vietnam": [
