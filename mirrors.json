@@ -1,0 +1,12 @@
+{
+    "France": [
+        "http://manjarolinux.polymorf.fr/$branch/$repo/$arch",
+        "http://mirror.lignux.com/manjaro/$branch/$repo/$arch",
+        "http://ftp.free.org/mirrors/repo.manjaro.org/repos/$branch/$repo/$arch",
+        "http://fr.mirror.babylon.network/manjaro/$branch/$repo/$arch"
+    ],
+    "Denmark": [
+        "http://mirrors.dotsrc.org/manjaro/$branch/$repo/$arch",
+        "http://www.uex.dk/repos/manjaro/$branch/$repo/$arch"
+    ]
+}
