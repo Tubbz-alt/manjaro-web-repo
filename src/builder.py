@@ -4,10 +4,14 @@ import json
 
 
 class Builder():
+    """
+    Handle generation of output files
+    """
     def __init__(self, states):
         self.states = states
 
     def write_json_output(self):
+        """Generate JSON output"""
         try:
             with open("status.json", "w") as json_output:
                 json.dump(self.states, json_output)
@@ -16,6 +20,7 @@ class Builder():
             print("Can't write JSON output")
 
     def write_html_output(self):
+        """Generate HTML output"""
         try:
             with open("data/header.html", "r") as header_file:
                 header = header_file.read()

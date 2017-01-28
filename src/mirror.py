@@ -10,6 +10,9 @@ from conf import BRANCHES, PROTOCOLS
 
 
 class Mirror():
+    """
+    Handle all mirror's properties
+    """
     def __init__(self, mirror, country):
         self.mirror = mirror
         self.country = country
@@ -19,6 +22,7 @@ class Mirror():
         self.branches = dict()
 
     def get_state_file(self):
+        """Fetch state file"""
         try:
             with urllib.request.urlopen(self.mirror_url + "state") as state_file:
                 return state_file.read().decode("utf-8")
@@ -26,6 +30,7 @@ class Mirror():
             print("\t\tCan't read state file.")
 
     def read_state_file(self, state_file):
+        """Read infos from state file"""
         pos = state_file.find("date=")
         if pos >= 0:
             mirror_date = datetime.datetime.strptime(state_file[pos+5:pos+24], "%Y-%m-%dT%H:%M:%S")

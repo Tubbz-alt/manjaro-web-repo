@@ -9,6 +9,9 @@ from mirror import Mirror
 from builder import Builder
 
 class StatusChecker():
+    """
+    Launch of actions
+    """
     def __init__(self):
         self.mirrors = list()
         self.hashes = list()
