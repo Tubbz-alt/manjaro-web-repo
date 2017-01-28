@@ -14,6 +14,7 @@ class Mirror():
     Handle all mirror's properties
     """
     def __init__(self, mirror, country):
+        self.state_file = None
         self.mirror = mirror
         self.country = country
         self.mirror_url = mirror.replace("$branch/$repo/$arch", "")
@@ -25,15 +26,15 @@ class Mirror():
         """Fetch state file"""
         try:
             with urllib.request.urlopen(self.mirror_url + "state") as state_file:
-                return state_file.read().decode("utf-8")
+                self.state_file = state_file.read().decode("utf-8")
         except urllib.error.URLError:
             print("\t\tCan't read state file.")
 
-    def read_state_file(self, state_file):
+    def read_state_file(self):
         """Read infos from state file"""
-        pos = state_file.find("date=")
+        pos = self.state_file.find("date=")
         if pos >= 0:
-            mirror_date = datetime.datetime.strptime(state_file[pos+5:pos+24], "%Y-%m-%dT%H:%M:%S")
+            mirror_date = datetime.datetime.strptime(self.state_file[pos+5:pos+24], "%Y-%m-%dT%H:%M:%S")
         total_seconds = (datetime.datetime.now() - mirror_date).total_seconds()
         total_minutes = total_seconds // 60
         elapsed_hours = total_minutes // 60

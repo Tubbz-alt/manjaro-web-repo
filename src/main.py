@@ -46,9 +46,9 @@ class StatusChecker():
             for mirror in self.mirrors[country]:
                 print("\t{}".format(mirror))
                 mirror = Mirror(mirror, country)
-                state_file = mirror.get_state_file()
-                if state_file:
-                    mirror.read_state_file(state_file)
+                mirror.get_state_file()
+                if mirror.state_file:
+                    mirror.read_state_file()
                     self.states.append({
                         "url": mirror.mirror_url,
                         "protocol": mirror.protocol,
