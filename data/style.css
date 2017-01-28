@@ -1,6 +1,5 @@
-thead, th, td {
-    border: 0 !important;
-    font-family: inherit;
+thead th {
+    border-top: 0 !important;
 }
 
 .template {
