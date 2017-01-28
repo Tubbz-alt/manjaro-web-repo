@@ -39,11 +39,6 @@ class StatusChecker():
             except OSError:
                 pass
         if len(self.hashes) < len(BRANCHES):
-            self.hashes = {
-                "stable": 0,
-                "testing": 0,
-                "unstable": 0
-            }
             print("Error: can't fetch last hashes.")
 
 
