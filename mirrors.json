@@ -70,7 +70,7 @@
         "http://mirror.netcologne.de/manjaro/$branch/$repo/$arch",
         "http://repo.rhindon.net/manjaro/$branch/$repo/$arch",
         "http://mirrors.cicku.me/manjaro/$branch/$repo/$arch",
-        "http://repo.stdout.net/manjaro/$branch/$repo/$arch",
+        "http://repo.stdout.net/manjaro/$branch/$repo/$arch"
     ],
     "Greece": [
         "http://ftp.cc.uoc.gr/mirrors/linux/manjaro/$branch/$repo/$arch"
