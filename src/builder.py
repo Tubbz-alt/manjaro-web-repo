@@ -44,7 +44,6 @@ class Builder():
                     else:
                         color = "table-danger"
                     html_output += "<tr class=\"" + color + "\">"
-                    html_output += "<tr>"
                     html_output += "<td><a href=\"" + state["url"] + "\">" + state["url"] + "</a></td>"
                     html_output += "<td>" + state['country'] + "</td>"
                     html_output += "<td>" + state["protocol"] + "</td>"
