@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import json
+import datetime
 
 from conf import BRANCHES, VERSION
 from helpers import close
@@ -37,7 +38,8 @@ class Builder():
             close()
         try:
             with open("index.html", "w") as index_file:
-                header = header.replace("VERSION", VERSION)
+                header = header.replace("VERSION", "v{}".format(VERSION))
+                header = header.replace("DATE", datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
                 html_output = header
                 for state in self.states:
                     if state["branches"]["stable"] and state["branches"]["testing"] and state["branches"]["unstable"]:
