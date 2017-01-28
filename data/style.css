@@ -1,0 +1,13 @@
+body {
+    padding-top: 5rem;
+}
+
+thead, th, td {
+    border: 0 !important;
+    font-family: inherit;
+}
+
+.template {
+    padding: 1rem 0;
+    text-align: center;
+}
