@@ -21,10 +21,10 @@ class StatusChecker():
     def get_mirrors(self):
         """Get list of mirrors"""
         try:
-            with open(MIRRORS_URL) as mirrors_file:
-                self.mirrors = json.load(mirrors_file)
+            with urllib.request.urlopen(MIRRORS_URL) as mirrors_file:
+                self.mirrors = json.loads(mirrors_file.read())
         except urllib.error.URLError:
-            print("Error: can't read list of mirrors.")
+            print("Error: can't fetch list of mirrors.")
 
 
     def get_hashes(self):
