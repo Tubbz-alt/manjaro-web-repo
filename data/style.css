@@ -1,5 +1,5 @@
-thead th {
-    border-top: 0 !important;
+thead, th, td {
+    border: 0 !important;
 }
 
 .template {
