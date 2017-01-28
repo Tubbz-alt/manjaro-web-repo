@@ -2,6 +2,7 @@
 
 import json
 import datetime
+import os
 
 from conf import BRANCHES, VERSION
 from helpers import close
@@ -13,16 +14,26 @@ class Builder():
     """
     def __init__(self, states):
         self.states = states
+        self.output_folder = "output/"
+        self.check_folder()
+
+    def check_folder(self):
+        try:
+            if not os.path.isdir(self.output_folder):
+                os.makedirs(self.output_folder)
+        except OSError:
+            print("Error: can't create output folder")
+            close()
 
 
     def write_json_output(self):
         """Generate JSON output"""
         try:
-            with open("status.json", "w") as json_output:
+            with open(self.output_folder + "status.json", "w") as json_output:
                 json.dump(self.states, json_output)
-                print("JSON output saved in status.json")
+                print("JSON output saved in output/status.json")
         except OSError:
-            print("Can't write JSON output")
+            print("Error: can't write JSON output")
             close()
 
 
@@ -34,10 +45,10 @@ class Builder():
             with open("data/footer.html", "r") as footer_file:
                 footer = footer_file.read()
         except OSError:
-            print("Can't read HTML template files")
+            print("Error: can't read HTML template files")
             close()
         try:
-            with open("index.html", "w") as index_file:
+            with open(self.output_folder + "index.html", "w") as index_file:
                 header = header.replace("VERSION", "v{}".format(VERSION))
                 header = header.replace("DATE", datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
                 html_output = header
@@ -61,7 +72,7 @@ class Builder():
                     html_output += "</tr>"
                 html_output += footer
                 index_file.write(html_output)
-                print("HTML output saved in index.html")
+                print("HTML output saved in output/index.html")
         except OSError:
-            print("Can't write HTML output")
+            print("Error: can't write HTML output")
             close()
