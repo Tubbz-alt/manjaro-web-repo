@@ -1,6 +1,6 @@
 {
     "France": [
-        "http://manjarolinux.polymorf.frs/$branch/$repo/$arch",
+        "http://manjarolinux.polymorf.fr/$branch/$repo/$arch",
         "http://mirror.lignux.com/manjaro/$branch/$repo/$arch",
         "http://ftp.free.org/mirrors/repo.manjaro.org/repos/$branch/$repo/$arch",
         "http://fr.mirror.babylon.network/manjaro/$branch/$repo/$arch"
