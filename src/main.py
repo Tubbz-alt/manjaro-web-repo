@@ -4,7 +4,7 @@ import json
 import urllib.request
 import time
 
-from conf import MIRRORS_URL, BRANCHES, SLEEP_TIME
+from conf import MIRRORS_URL, BRANCHES
 from mirror import Mirror
 from builder import Builder
 
@@ -70,12 +70,9 @@ if __name__ == "__main__":
     print("----Manjaro mirror's tracker----")
     print("--------------------------------\n")
     status_checker = StatusChecker()
-    while True:
-        status_checker.get_mirrors()
-        status_checker.get_hashes()
-        status_checker.check_mirrors()
-        builder = Builder(status_checker.states)
-        builder.write_json_output()
-        builder.write_html_output()
-        print("Next check in {} min".format(SLEEP_TIME))
-        time.sleep(SLEEP_TIME * 60)
+    status_checker.get_mirrors()
+    status_checker.get_hashes()
+    status_checker.check_mirrors()
+    builder = Builder(status_checker.states)
+    builder.write_json_output()
+    builder.write_html_output()
