@@ -14,7 +14,7 @@ class StatusChecker():
     """
     def __init__(self):
         self.mirrors = list()
-        self.hashes = list()
+        self.hashes = dict()
         self.states = list()
 
     def get_mirrors(self):
@@ -33,7 +33,7 @@ class StatusChecker():
                     content = branch_state.read()
                     pos = content.find("state=")
                     if pos >= 0:
-                        self.hashes.append(content[pos+6:pos+46])
+                        self.hashes[branch] = content[pos+6:pos+46]
             except OSError:
                 pass
         if len(self.hashes) < len(BRANCHES):
@@ -48,7 +48,7 @@ class StatusChecker():
                 mirror = Mirror(mirror, country)
                 mirror.get_state_file()
                 if mirror.state_file:
-                    mirror.read_state_file()
+                    mirror.read_state_file(self.hashes)
                     self.states.append({
                         "url": mirror.mirror_url,
                         "protocol": mirror.protocol,

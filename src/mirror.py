@@ -30,7 +30,7 @@ class Mirror():
         except urllib.error.URLError:
             print("\t\tCan't read state file.")
 
-    def read_state_file(self):
+    def read_state_file(self, hashes):
         """Read infos from state file"""
         pos = self.state_file.find("date=")
         if pos >= 0:
@@ -51,6 +51,6 @@ class Mirror():
                     pos = content.find("state=")
                     if pos >= 0:
                         branch_hash = content[pos+6:pos+46]
-                        self.branches[branch] = bool(branch_hash == 0)
+                        self.branches[branch] = bool(branch_hash == hashes[branch])
             except urllib.error.URLError:
                     print("\t\tCan't read hash from state file.")
