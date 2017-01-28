@@ -66,5 +66,5 @@ if __name__ == "__main__":
         builder = Builder(status_checker.states)
         builder.write_json_output()
         builder.write_html_output()
-        print("Next chech in {} min".format(SLEEP_TIME))
+        print("Next check in {} min".format(SLEEP_TIME))
         time.sleep(SLEEP_TIME * 60)
