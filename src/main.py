@@ -31,7 +31,7 @@ class StatusChecker():
         """Get last hashes"""
         for branch in BRANCHES:
             try:
-                with open("/repo/repo/" + branch + "/state", "r") as branch_state:
+                with open("/var/repo/repo/" + branch + "/state", "r") as branch_state:
                     content = branch_state.read()
                     pos = content.find("state=")
                     if pos >= 0:
