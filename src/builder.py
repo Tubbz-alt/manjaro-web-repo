@@ -10,6 +10,7 @@ class Builder():
     def __init__(self, states):
         self.states = states
 
+
     def write_json_output(self):
         """Generate JSON output"""
         try:
@@ -18,6 +19,7 @@ class Builder():
                 print("JSON output save in status.json")
         except OSError:
             print("Can't write JSON output")
+
 
     def write_html_output(self):
         """Generate HTML output"""

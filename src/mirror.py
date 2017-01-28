@@ -5,7 +5,6 @@ import urllib.request
 import datetime
 import urllib.parse
 
-
 from conf import BRANCHES, PROTOCOLS
 
 
@@ -29,6 +28,7 @@ class Mirror():
                 self.state_file = state_file.read().decode("utf-8")
         except urllib.error.URLError:
             print("\t\tCan't read state file.")
+
 
     def read_state_file(self, hashes):
         """Read infos from state file"""

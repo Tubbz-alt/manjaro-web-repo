@@ -8,6 +8,7 @@ from conf import MIRRORS_URL, BRANCHES, SLEEP_TIME
 from mirror import Mirror
 from builder import Builder
 
+
 class StatusChecker():
     """
     Launch of actions
@@ -25,6 +26,7 @@ class StatusChecker():
         except urllib.error.URLError:
             print("Error: can't read list of mirrors.")
 
+
     def get_hashes(self):
         """Get last hashes"""
         for branch in BRANCHES:
@@ -37,7 +39,13 @@ class StatusChecker():
             except OSError:
                 pass
         if len(self.hashes) < len(BRANCHES):
+            self.hashes = {
+                "stable": 0,
+                "testing": 0,
+                "unstable": 0
+            }
             print("Error: can't fetch last hashes.")
+
 
     def check_mirrors(self):
         """Check each mirror"""
