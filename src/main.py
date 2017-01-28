@@ -23,7 +23,7 @@ class StatusChecker():
         """Get list of mirrors"""
         try:
             with urllib.request.urlopen(MIRRORS_URL) as mirrors_file:
-                self.mirrors = json.loads(mirrors_file.read())
+                self.mirrors = json.loads(mirrors_file.read().decode("utf-8"))
         except urllib.error.URLError:
             print("Error: can't fetch list of mirrors.")
             close()
