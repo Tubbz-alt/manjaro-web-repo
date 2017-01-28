@@ -7,6 +7,7 @@ import time
 from conf import MIRRORS_URL, BRANCHES
 from mirror import Mirror
 from builder import Builder
+from helpers import close
 
 
 class StatusChecker():
@@ -25,6 +26,7 @@ class StatusChecker():
                 self.mirrors = json.loads(mirrors_file.read())
         except urllib.error.URLError:
             print("Error: can't fetch list of mirrors.")
+            close()
 
 
     def get_hashes(self):
@@ -40,6 +42,7 @@ class StatusChecker():
                 pass
         if len(self.hashes) < len(BRANCHES):
             print("Error: can't fetch last hashes.")
+            close()
 
 
     def check_mirrors(self):

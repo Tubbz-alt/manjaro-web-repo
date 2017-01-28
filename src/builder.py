@@ -3,6 +3,7 @@
 import json
 
 from conf import BRANCHES, VERSION
+from helpers import close
 
 
 class Builder():
@@ -21,6 +22,7 @@ class Builder():
                 print("JSON output saved in status.json")
         except OSError:
             print("Can't write JSON output")
+            close()
 
 
     def write_html_output(self):
@@ -32,6 +34,7 @@ class Builder():
                 footer = footer_file.read()
         except OSError:
             print("Can't read HTML template files")
+            close()
         try:
             with open("index.html", "w") as index_file:
                 header = header.replace("VERSION", VERSION)
@@ -59,3 +62,4 @@ class Builder():
                 print("HTML output saved in index.html")
         except OSError:
             print("Can't write HTML output")
+            close()
