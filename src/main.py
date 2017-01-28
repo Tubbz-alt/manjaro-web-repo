@@ -41,7 +41,7 @@ class StatusChecker():
         for country in self.mirrors:
             print("{}:".format(country))
             for mirror in self.mirrors[country]:
-                print("\t{}:".format(mirror))
+                print("\t{}".format(mirror))
                 mirror = Mirror(mirror, country)
                 state_file = mirror.get_state_file()
                 if state_file:
