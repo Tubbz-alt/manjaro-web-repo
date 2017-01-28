@@ -24,16 +24,13 @@ class Builder():
         try:
             with open("data/header.html", "r") as header_file:
                 header = header_file.read()
-        except OSError:
-            print("Can't read HTML header file")
-        try:
             with open("data/footer.html", "r") as footer_file:
                 footer = footer_file.read()
         except OSError:
-            print("Can't read HTML footer file")
+            print("Can't read HTML template files")
         try:
             with open("index.html", "w") as index_file:
-                content = header
+                html_output = header
                 for state in self.states:
                     if state["branches"]["stable"] and state["branches"]["testing"] and state["branches"]["unstable"]:
                         color = "table-success"
@@ -41,20 +38,20 @@ class Builder():
                         color = "table-warning"
                     else:
                         color = "table-danger"
-                    content += "<tr class=\"" + color + "\">"
-                    content += "<tr>"
-                    content += "<td><a href=\"" + state["url"] + "\">" + state["url"] + "</a></td>"
-                    content += "<td>" + state['country'] + "</td>"
-                    content += "<td>" + state["protocol"] + "</td>"
-                    content += "<td>" + state["last_sync"] + "</td>"
+                    html_output += "<tr class=\"" + color + "\">"
+                    html_output += "<tr>"
+                    html_output += "<td><a href=\"" + state["url"] + "\">" + state["url"] + "</a></td>"
+                    html_output += "<td>" + state['country'] + "</td>"
+                    html_output += "<td>" + state["protocol"] + "</td>"
+                    html_output += "<td>" + state["last_sync"] + "</td>"
                     for branch in state["branches"]:
                         if state["branches"][branch]:
-                            content +="<td><i class=\"fa fa-check\" aria-hidden=\"true\"></i></td>";
+                            html_output +="<td><i class=\"fa fa-check\" aria-hidden=\"true\"></i></td>";
                         else:
-                            content += "<td><i class=\"fa fa-times\" aria-hidden=\"true\"></i></td>";
-                    content += "</tr>"
-                content += footer
-                index_file.write(content)
+                            html_output += "<td><i class=\"fa fa-times\" aria-hidden=\"true\"></i></td>";
+                    html_output += "</tr>"
+                html_output += footer
+                index_file.write(html_output)
                 print("HTML output save in index.html")
         except OSError:
             print("Can't write HTML output")
