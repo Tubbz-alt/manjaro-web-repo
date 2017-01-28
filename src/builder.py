@@ -16,7 +16,7 @@ class Builder():
         try:
             with open("status.json", "w") as json_output:
                 json.dump(self.states, json_output)
-                print("JSON output save in status.json")
+                print("JSON output saved in status.json")
         except OSError:
             print("Can't write JSON output")
 
@@ -54,6 +54,6 @@ class Builder():
                     html_output += "</tr>"
                 html_output += footer
                 index_file.write(html_output)
-                print("HTML output save in index.html")
+                print("HTML output saved in index.html")
         except OSError:
             print("Can't write HTML output")
