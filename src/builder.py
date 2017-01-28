@@ -2,6 +2,8 @@
 
 import json
 
+from conf import VERSION
+
 
 class Builder():
     """
@@ -32,6 +34,7 @@ class Builder():
             print("Can't read HTML template files")
         try:
             with open("index.html", "w") as index_file:
+                header = header.replace("<!-- VERSION -->", VERSION)
                 html_output = header
                 for state in self.states:
                     if state["branches"]["stable"] and state["branches"]["testing"] and state["branches"]["unstable"]:
