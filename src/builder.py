@@ -2,7 +2,7 @@
 
 import json
 
-from conf import VERSION
+from conf import BRANCHES, VERSION
 
 
 class Builder():
@@ -48,7 +48,7 @@ class Builder():
                     html_output += "<td>" + state['country'] + "</td>"
                     html_output += "<td>" + state["protocol"] + "</td>"
                     html_output += "<td>" + state["last_sync"] + "</td>"
-                    for branch in state["branches"]:
+                    for branch in BRANCHES:
                         if state["branches"][branch]:
                             html_output +="<td><i class=\"fa fa-check\" aria-hidden=\"true\"></i></td>";
                         else:
