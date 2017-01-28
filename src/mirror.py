@@ -26,8 +26,10 @@ class Mirror():
         try:
             with urllib.request.urlopen(self.mirror_url + "state") as state_file:
                 self.state_file = state_file.read().decode("utf-8")
+                return True
         except urllib.error.URLError:
             print("\t\tCan't read state file.")
+            return False
 
 
     def read_state_file(self, hashes):
