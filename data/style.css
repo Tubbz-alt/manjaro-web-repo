@@ -6,3 +6,24 @@ thead, th, td {
     padding: 5rem 0 1rem 0;
     text-align: center;
 }
+
+.tablesorter-header-inner:after {
+    font-family: "FontAwesome";
+    float: right;
+}
+
+.tablesorter-header .tablesorter-header-inner:after {
+    content: "\f0dc";
+}
+
+.tablesorter-headerAsc .tablesorter-header-inner:after {
+    content: "\f0de";
+}
+
+.tablesorter-headerDesc .tablesorter-header-inner:after {
+    content: "\f0dd";
+}
+
+.sorter-false .tablesorter-header-inner:after {
+    content: "";
+}
