@@ -72,7 +72,7 @@ class Builder():
                             else:
                                 html_output += icon.format("times", "Out of date")
                         else:
-                            html_output += icon.format("question", "Unknow")
+                            html_output += icon.format("question", "Unknown")
                     html_output += "</tr>"
                 html_output += footer
                 index_file.write(html_output)
