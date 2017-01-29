@@ -14,7 +14,7 @@ class Builder():
     """
     def __init__(self, states):
         self.states = states
-        self.output_folder = "output/"
+        self.output_folder = "docs/"
         self.check_folder()
 
     def check_folder(self):
@@ -31,7 +31,7 @@ class Builder():
         try:
             with open(self.output_folder + "status.json", "w") as json_output:
                 json.dump(self.states, json_output)
-                print("JSON output saved in output/status.json")
+                print("JSON output saved in " + self.output_folder +"/status.json")
         except OSError:
             print("Error: can't write JSON output")
             close()
@@ -72,7 +72,7 @@ class Builder():
                     html_output += "</tr>"
                 html_output += footer
                 index_file.write(html_output)
-                print("HTML output saved in output/index.html")
+                print("HTML output saved in " + self.output_folder +"/index.html")
         except OSError:
             print("Error: can't write HTML output")
             close()
