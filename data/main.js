@@ -50,8 +50,8 @@ $(function () {
 
     $("#country-select").change(function() {
         var country = $(this).find("option:selected").text();
-        country = country.split(' ').join('_');
-        filters["country"] = (country == "All countries") ? "all" : country;
+        country = country.split(" ").join("_");
+        filters["country"] = (country == "All_countries") ? "all" : country;
         updateList();
     });
     $('input[type="checkbox"]').change(function() {
