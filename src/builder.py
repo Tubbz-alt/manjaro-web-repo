@@ -66,9 +66,9 @@ class Builder():
                     html_output += "<td>" + state["last_sync"] + "</td>"
                     for branch in BRANCHES:
                         if state["branches"][branch]:
-                            html_output +="<td><i class=\"fa fa-check\" aria-hidden=\"true\"></i></td>";
+                            html_output += "<td><i class=\"fa fa-check\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Up to date\"></i></td>"
                         else:
-                            html_output += "<td><i class=\"fa fa-times\" aria-hidden=\"true\"></i></td>";
+                            html_output += "<td><i class=\"fa fa-times\" aria-hidden=\"true\"data-toggle=\"tooltip\" data-placement=\"top\" title=\"Out of date\"></i></td>"
                     html_output += "</tr>"
                 html_output += footer
                 index_file.write(html_output)
