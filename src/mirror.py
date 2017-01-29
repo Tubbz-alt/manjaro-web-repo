@@ -56,3 +56,5 @@ class Mirror():
                         self.branches.append(bool(branch_hash == hashes[i]))
             except urllib.error.URLError:
                     print("\t\tCan't read hash from state file.")
+        if not self.branches:
+            self.branches = [False, False, False]
