@@ -62,7 +62,7 @@ class Builder():
                         color = "table-danger"
                     html_output += "<tr class=\"{}\">".format(color)
                     html_output += "<td><a href=\"{url}\">{url}</a></td>".format(url=state["url"])
-                    html_output += "<td>{}</td>".format(state["country"])
+                    html_output += "<td>{}</td>".format(state["country"].replace("_", " "))
                     html_output += "<td>{}</td>".format(state["protocol"])
                     html_output += "<td>{}</td>".format(state["last_sync"])
                     for i, branch in enumerate(BRANCHES):

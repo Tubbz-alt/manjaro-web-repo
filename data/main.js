@@ -34,13 +34,14 @@ $(function () {
     }
 
     $("#country-select").change(function() {
-        var filter = $(this).find("option:selected").text();
-        filters["country"] = (filter == "All countries") ? "all" : filter;
+        var country = $(this).find("option:selected").text();
+        country = country.split(' ').join('_');
+        filters["country"] = (country == "All countries") ? "all" : country;
         updateList();
     });
     $('input[type="checkbox"]').change(function() {
-        var filter = $(this).parent().find(".custom-control-description").text().toLowerCase();
-        filters[filter] = $(this).is(":checked");
+        var protocol = $(this).parent().find(".custom-control-description").text().toLowerCase();
+        filters[protocol] = $(this).is(":checked");
         updateList();
     });
 });
