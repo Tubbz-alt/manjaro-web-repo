@@ -31,7 +31,7 @@ class Builder():
         try:
             with open(self.output_folder + "status.json", "w") as json_output:
                 json.dump(self.states, json_output)
-                print("JSON output saved in " + self.output_folder +"/status.json")
+                print("JSON output saved in {}status.json".format(self.output_folder))
         except OSError:
             print("Error: can't write JSON output")
             close()
@@ -59,11 +59,11 @@ class Builder():
                         color = "table-warning"
                     else:
                         color = "table-danger"
-                    html_output += "<tr class=\"" + color + "\">"
-                    html_output += "<td><a href=\"" + state["url"] + "\">" + state["url"] + "</a></td>"
-                    html_output += "<td>" + state['country'] + "</td>"
-                    html_output += "<td>" + state["protocol"] + "</td>"
-                    html_output += "<td>" + state["last_sync"] + "</td>"
+                    html_output += "<tr class=\"{}\">".format(color)
+                    html_output += "<td><a href=\"{url}\">{url}</a></td>".format(url=state["url"])
+                    html_output += "<td>{}</td>".format(state["country"])
+                    html_output += "<td>{}</td>".format(state["protocol"])
+                    html_output += "<td>{}</td>".format(state["last_sync"])
                     for branch in BRANCHES:
                         if state["branches"][branch]:
                             html_output += "<td><i class=\"fa fa-check\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Up to date\"></i></td>"
@@ -72,7 +72,7 @@ class Builder():
                     html_output += "</tr>"
                 html_output += footer
                 index_file.write(html_output)
-                print("HTML output saved in " + self.output_folder +"/index.html")
+                print("HTML output saved in {}index.html".format(self.output_folder))
         except OSError:
             print("Error: can't write HTML output")
             close()
