@@ -30,7 +30,7 @@ class Builder():
         """Generate JSON output"""
         try:
             with open(self.output_folder + "status.json", "w") as json_output:
-                json.dump(self.states, json_output)
+                json.dump(self.states, json_output, sort_keys=True)
                 print("JSON output saved in {}status.json".format(self.output_folder))
         except OSError:
             print("Error: can't write JSON output")

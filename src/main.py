@@ -8,6 +8,7 @@ from conf import MIRRORS_URL, BRANCHES
 from mirror import Mirror
 from builder import Builder
 from helpers import close
+from collections import OrderedDict
 
 
 class StatusChecker():
@@ -23,7 +24,8 @@ class StatusChecker():
         """Get list of mirrors"""
         try:
             with urllib.request.urlopen(MIRRORS_URL) as mirrors_file:
-                self.mirrors = json.loads(mirrors_file.read().decode("utf-8"))
+                self.mirrors = json.loads(mirrors_file.read().decode("utf-8"),
+                                          object_pairs_hook=OrderedDict)
         except urllib.error.URLError:
             print("Error: can't fetch list of mirrors.")
             close()
