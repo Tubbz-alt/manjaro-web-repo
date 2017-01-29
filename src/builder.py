@@ -65,10 +65,11 @@ class Builder():
                     html_output += "<td>{}</td>".format(state["protocol"])
                     html_output += "<td>{}</td>".format(state["last_sync"])
                     for branch in BRANCHES:
+                        icon = '<td><i class="fa fa-{}" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{}"></i></td>'
                         if state["branches"][branch]:
-                            html_output += "<td><i class=\"fa fa-check\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Up to date\"></i></td>"
+                            html_output += icon.format("check", "Up to date")
                         else:
-                            html_output += "<td><i class=\"fa fa-times\" aria-hidden=\"true\"data-toggle=\"tooltip\" data-placement=\"top\" title=\"Out of date\"></i></td>"
+                            html_output += icon.format("times", "Out of date")
                     html_output += "</tr>"
                 html_output += footer
                 index_file.write(html_output)
