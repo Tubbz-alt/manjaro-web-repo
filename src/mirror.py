@@ -57,4 +57,4 @@ class Mirror():
             except urllib.error.URLError:
                     print("\t\tCan't read hash from state file.")
         if not self.branches:
-            self.branches = [False, False, False]
+            self.branches = None

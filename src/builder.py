@@ -66,10 +66,13 @@ class Builder():
                     html_output += "<td>{}</td>".format(state["last_sync"])
                     for i, branch in enumerate(BRANCHES):
                         icon = '<td><i class="fa fa-{}" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{}"></i></td>'
-                        if state["branches"][i]:
-                            html_output += icon.format("check", "Up to date")
+                        if state["branches"]:
+                            if state["branches"][i]:
+                                html_output += icon.format("check", "Up to date")
+                            else:
+                                html_output += icon.format("times", "Out of date")
                         else:
-                            html_output += icon.format("times", "Out of date")
+                            html_output += icon.format("question", "Unknow")
                     html_output += "</tr>"
                 html_output += footer
                 index_file.write(html_output)
