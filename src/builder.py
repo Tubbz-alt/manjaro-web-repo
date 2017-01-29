@@ -14,6 +14,7 @@ class Builder():
     """
     def __init__(self, states):
         self.states = states
+        self.root_folder = "/var/www/manjaro-web-repo/docroot/new/manjaro-web-repo/"
         self.output_folder = "docs/"
         self.check_folder()
 
@@ -29,9 +30,9 @@ class Builder():
     def write_json_output(self):
         """Generate JSON output"""
         try:
-            with open(self.output_folder + "status.json", "w") as json_output:
+            with open(self.root_folder + self.output_folder + "status.json", "w") as json_output:
                 json.dump(self.states, json_output, sort_keys=True)
-                print("JSON output saved in {}status.json".format(self.output_folder))
+                print("JSON output saved in {}status.json".format(self.root_folder + self.output_folder))
         except OSError:
             print("Error: can't write JSON output")
             close()
@@ -40,15 +41,15 @@ class Builder():
     def write_html_output(self):
         """Generate HTML output"""
         try:
-            with open("data/header.html", "r") as header_file:
+            with open(self.root_folder + "data/header.html", "r") as header_file:
                 header = header_file.read()
-            with open("data/footer.html", "r") as footer_file:
+            with open(self.root_folder + "data/footer.html", "r") as footer_file:
                 footer = footer_file.read()
         except OSError:
             print("Error: can't read HTML template files")
             close()
         try:
-            with open(self.output_folder + "index.html", "w") as index_file:
+            with open(self.root_folder + self.output_folder + "index.html", "w") as index_file:
                 header = header.replace("VERSION", "v{}".format(VERSION))
                 header = header.replace("DATE", datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
                 html_output = header
@@ -76,7 +77,7 @@ class Builder():
                     html_output += "</tr>"
                 html_output += footer
                 index_file.write(html_output)
-                print("HTML output saved in {}index.html".format(self.output_folder))
+                print("HTML output saved in {}index.html".format(self.root_folder + self.output_folder))
         except OSError:
             print("Error: can't write HTML output")
             close()
