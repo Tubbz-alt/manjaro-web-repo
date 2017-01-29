@@ -17,7 +17,7 @@ class StatusChecker():
     """
     def __init__(self):
         self.mirrors = list()
-        self.hashes = dict()
+        self.hashes = list()
         self.states = list()
 
     def get_mirrors(self):
@@ -39,7 +39,7 @@ class StatusChecker():
                     content = branch_state.read()
                     pos = content.find("state=")
                     if pos >= 0:
-                        self.hashes[branch] = content[pos+6:pos+46]
+                        self.hashes.append(content[pos+6:pos+46])
             except OSError:
                 pass
         if len(self.hashes) < len(BRANCHES):

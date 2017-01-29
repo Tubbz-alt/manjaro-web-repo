@@ -19,7 +19,7 @@ class Mirror():
         self.mirror_url = mirror.replace("$branch/$repo/$arch", "")
         self.protocol = str()
         self.last_sync = str()
-        self.branches = dict()
+        self.branches = list()
 
     def get_state_file(self):
         """Fetch state file"""
@@ -46,13 +46,13 @@ class Mirror():
         protocol = urllib.parse.urlsplit(self.mirror_url)[0]
         if protocol in PROTOCOLS:
             self.protocol = protocol
-        for branch in BRANCHES:
+        for i, branch in enumerate(BRANCHES):
             try:
                 with urllib.request.urlopen(self.mirror_url + branch + "/state") as response:
                     content = response.read().decode("utf-8")
                     pos = content.find("state=")
                     if pos >= 0:
                         branch_hash = content[pos+6:pos+46]
-                        self.branches[branch] = bool(branch_hash == hashes[branch])
+                        self.branches.append(bool(branch_hash == hashes[i]))
             except urllib.error.URLError:
                     print("\t\tCan't read hash from state file.")

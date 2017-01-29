@@ -53,9 +53,9 @@ class Builder():
                 header = header.replace("DATE", datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
                 html_output = header
                 for state in self.states:
-                    if state["branches"]["stable"] and state["branches"]["testing"] and state["branches"]["unstable"]:
+                    if all(state["branches"]):
                         color = "table-success"
-                    elif state["branches"]["stable"] or state["branches"]["testing"] or state["branches"]["unstable"]:
+                    elif any(state["branches"]):
                         color = "table-warning"
                     else:
                         color = "table-danger"
@@ -64,9 +64,9 @@ class Builder():
                     html_output += "<td>{}</td>".format(state["country"])
                     html_output += "<td>{}</td>".format(state["protocol"])
                     html_output += "<td>{}</td>".format(state["last_sync"])
-                    for branch in BRANCHES:
+                    for i, branch in enumerate(BRANCHES):
                         icon = '<td><i class="fa fa-{}" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{}"></i></td>'
-                        if state["branches"][branch]:
+                        if state["branches"][i]:
                             html_output += icon.format("check", "Up to date")
                         else:
                             html_output += icon.format("times", "Out of date")
