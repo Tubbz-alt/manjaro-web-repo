@@ -24,6 +24,21 @@ $(function () {
     // Enable tooltips
     $('[data-toggle="tooltip"]').tooltip()
     // Enable table sorting
+    $.tablesorter.addParser({
+        id: "branch",
+        is: function(s, table, cell, $cell) {
+            return false;
+        },
+        format: function(s, table, cell, cellIndex) {
+            if($(cell).html().includes("check"))
+                return 0
+            else if($(cell).html().includes("times"))
+                return 1
+            else
+                return 2
+        },
+        type: 'numeric'
+    });
     $("#mirrors").tablesorter();
     // Filters
     var filters = {
