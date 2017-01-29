@@ -4,7 +4,7 @@ import json
 import datetime
 import os
 
-from conf import BRANCHES, VERSION , ROOT_FOLDER, OUTPUT_FOLDER
+from conf import BRANCHES, VERSION, ROOT_FOLDER, OUTPUT_FOLDER
 from helpers import close
 
 
@@ -15,6 +15,8 @@ class Builder():
     def __init__(self, states):
         self.states = states
         self.check_folder()
+        self.json_path = ROOT_FOLDER + OUTPUT_FOLDER + "status.json"
+        self.html_path = ROOT_FOLDER + OUTPUT_FOLDER + "index.html"
 
     def check_folder(self):
         try:
@@ -28,9 +30,9 @@ class Builder():
     def write_json_output(self):
         """Generate JSON output"""
         try:
-            with open(ROOT_FOLDER + OUTPUT_FOLDER + "status.json", "w") as json_output:
+            with open(self.json_path, "w") as json_output:
                 json.dump(self.states, json_output, sort_keys=True)
-                print("JSON output saved in {}status.json".format(ROOT_FOLDER + OUTPUT_FOLDER))
+                print("JSON output saved in {}".format(self.json_path))
         except OSError:
             print("Error: can't write JSON output")
             close()
@@ -47,7 +49,7 @@ class Builder():
             print("Error: can't read HTML template files")
             close()
         try:
-            with open(ROOT_FOLDER + OUTPUT_FOLDER + "index.html", "w") as index_file:
+            with open(self.html_path, "w") as index_file:
                 header = header.replace("VERSION", "v{}".format(VERSION))
                 header = header.replace("DATE", datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
                 html_output = header
@@ -75,7 +77,7 @@ class Builder():
                     html_output += "</tr>"
                 html_output += footer
                 index_file.write(html_output)
-                print("HTML output saved in {}index.html".format(ROOT_FOLDER + OUTPUT_FOLDER))
+                print("HTML output saved in {}".format(self.html_path))
         except OSError:
             print("Error: can't write HTML output")
             close()
