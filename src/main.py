@@ -57,7 +57,7 @@ class StatusChecker():
                 if mirror.get_state_file():
                     mirror.read_state_file(self.hashes)
                     self.states.append({
-                        "url": mirror.mirror_url,
+                        "url": mirror.mirror,
                         "protocol": mirror.protocol,
                         "country": mirror.country,
                         "last_sync": mirror.last_sync,
