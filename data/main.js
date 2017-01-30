@@ -32,9 +32,9 @@ $(function () {
             return false;
         },
         format: function(s, table, cell, cellIndex) {
-            if($(cell).html().includes("check"))
+            if($(cell).html().includes("up"))
                 return 0
-            else if($(cell).html().includes("times"))
+            else if($(cell).html().includes("out"))
                 return 1
             else
                 return 2
