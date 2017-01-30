@@ -12,6 +12,7 @@ thead, th, td {
 
 .tablesorter-header {
     position: relative;
+    cursor: pointer;
 }
 
 .tablesorter-header .sort-arrow {
