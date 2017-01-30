@@ -1,3 +1,7 @@
+.no-js #filters {
+    display: none;
+}
+
 thead, th, td {
     border: 0 !important;
 }

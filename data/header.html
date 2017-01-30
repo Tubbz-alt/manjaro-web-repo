@@ -9,7 +9,7 @@
     <link href="../data/style.css" rel="stylesheet">
     <link rel="icon" href="../data/manjaro.png">
 </head>
-<body>
+<body class="no-js">
     <nav class="navbar navbar-toggleable-md navbar-light fixed-top bg-faded">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -33,61 +33,63 @@
     </nav>
 
     <div class="container template">
-        <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" checked>
-            <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">HTTP</span>
-        </label>
-        <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" checked>
-            <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">HTTPS</span>
-        </label>
-        <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" checked>
-            <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">FTP</span>
-        </label>
-        <select id="country-select" class="custom-select">
-            <option selected>All countries</option>
-            <option>Africa</option>
-            <option>Australia</option>
-            <option>Austria</option>
-            <option>Belarus</option>
-            <option>Belgium</option>
-            <option>Brasil</option>
-            <option>Bulgaria</option>
-            <option>Canada</option>
-            <option>Chile</option>
-            <option>China</option>
-            <option>Colombia</option>
-            <option>Costa Rica</option>
-            <option>Czech</option>
-            <option>Denmark</option>
-            <option>Ecuador</option>
-            <option>France</option>
-            <option>Germany</option>
-            <option>Greece</option>
-            <option>Hungary</option>
-            <option>Indonesia</option>
-            <option>Ireland</option>
-            <option>Italy</option>
-            <option>Japan</option>
-            <option>Netherlands</option>
-            <option>Philippines</option>
-            <option>Poland</option>
-            <option>Portugal</option>
-            <option>Romania</option>
-            <option>Russia</option>
-            <option>Singapore</option>
-            <option>Sweden</option>
-            <option>Taiwan</option>
-            <option>Turkey</option>
-            <option>United Kingdom</option>
-            <option>United States</option>
-            <option>Vietnam</option>
-        </select>
-        <hr>
+        <div id="filters">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" checked>
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">HTTP</span>
+            </label>
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" checked>
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">HTTPS</span>
+            </label>
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" checked>
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">FTP</span>
+            </label>
+            <select id="country-select" class="custom-select">
+                <option selected>All countries</option>
+                <option>Africa</option>
+                <option>Australia</option>
+                <option>Austria</option>
+                <option>Belarus</option>
+                <option>Belgium</option>
+                <option>Brasil</option>
+                <option>Bulgaria</option>
+                <option>Canada</option>
+                <option>Chile</option>
+                <option>China</option>
+                <option>Colombia</option>
+                <option>Costa Rica</option>
+                <option>Czech</option>
+                <option>Denmark</option>
+                <option>Ecuador</option>
+                <option>France</option>
+                <option>Germany</option>
+                <option>Greece</option>
+                <option>Hungary</option>
+                <option>Indonesia</option>
+                <option>Ireland</option>
+                <option>Italy</option>
+                <option>Japan</option>
+                <option>Netherlands</option>
+                <option>Philippines</option>
+                <option>Poland</option>
+                <option>Portugal</option>
+                <option>Romania</option>
+                <option>Russia</option>
+                <option>Singapore</option>
+                <option>Sweden</option>
+                <option>Taiwan</option>
+                <option>Turkey</option>
+                <option>United Kingdom</option>
+                <option>United States</option>
+                <option>Vietnam</option>
+            </select>
+            <hr>
+        </div>
 
         <table id="mirrors" class="table table-sm">
             <thead>

@@ -1,4 +1,6 @@
 $(function () {
+    // Javascript is enabled
+    $("body").removeClass("no-js");
     /*
     FUNCTIONS
     */
