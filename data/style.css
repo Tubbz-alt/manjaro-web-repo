@@ -10,14 +10,28 @@ thead, th, td {
     padding: 5rem 0 1rem 0;
 }
 
-.tablesorter-header .tablesorter-header-inner{
-    background: url("../data/sort.png") right no-repeat;
+.tablesorter-header {
+    position: relative;
 }
 
-.tablesorter-headerAsc .tablesorter-header-inner {
-    background: url("../data/asc.png") top right no-repeat;
+.tablesorter-header .sort-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    display: block;
+    width: 10px;
+    height: 20px;
 }
 
-.tablesorter-headerDesc .tablesorter-header-inner {
-    background: url("../data/desc.png") bottom right no-repeat;
+.tablesorter-headerUnSorted .sort-arrow {
+    background: url("../data/sort.png") no-repeat;
+}
+
+.tablesorter-headerAsc .sort-arrow {
+    background: url("../data/asc.png") no-repeat;
+}
+
+.tablesorter-headerDesc .sort-arrow {
+    background: url("../data/desc.png") no-repeat;
 }
