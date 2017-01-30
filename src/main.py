@@ -53,7 +53,7 @@ class StatusChecker():
             print("{}:".format(country))
             for mirror in self.mirrors[country]:
                 mirror = Mirror(mirror, country)
-                print("\t{}".format(mirror.mirror_url))
+                print("\t{}".format(mirror.mirror))
                 if mirror.get_state_file():
                     mirror.read_state_file(self.hashes)
                     self.states.append({

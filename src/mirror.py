@@ -16,7 +16,6 @@ class Mirror():
         self.state_file = None
         self.mirror = mirror
         self.country = country
-        self.mirror_url = mirror.replace("$branch/$repo/$arch", "")
         self.protocol = str()
         self.last_sync = str()
         self.branches = list()
@@ -24,7 +23,7 @@ class Mirror():
     def get_state_file(self):
         """Fetch state file"""
         try:
-            with urllib.request.urlopen(self.mirror_url + "state") as state_file:
+            with urllib.request.urlopen(self.mirror + "state") as state_file:
                 self.state_file = state_file.read().decode("utf-8")
                 return True
         except urllib.error.URLError:
@@ -39,12 +38,12 @@ class Mirror():
             mirror_date = datetime.datetime.strptime(self.state_file[pos+5:pos+24], "%Y-%m-%dT%H:%M:%S")
         diff = int((datetime.datetime.now() - mirror_date).total_seconds())
         self.last_sync = str(datetime.timedelta(seconds=diff))
-        protocol = urllib.parse.urlsplit(self.mirror_url)[0]
+        protocol = urllib.parse.urlsplit(self.mirror)[0]
         if protocol in PROTOCOLS:
             self.protocol = protocol
         for i, branch in enumerate(BRANCHES):
             try:
-                with urllib.request.urlopen(self.mirror_url + branch + "/state") as response:
+                with urllib.request.urlopen(self.mirror + branch + "/state") as response:
                     content = response.read().decode("utf-8")
                     pos = content.find("state=")
                     if pos >= 0:
