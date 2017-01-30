@@ -5,7 +5,6 @@ $(function () {
     FUNCTIONS
     */
     function updateList() {
-        console.log(filters);
         $("#mirrors tr").each(function() {
             var country = $("td:eq(1)", this).text();
             country = country.split(" ").join("_");
