@@ -6,6 +6,7 @@ $(function () {
         console.log(filters);
         $("#mirrors tr").each(function() {
             var country = $("td:eq(1)", this).text();
+            country = country.split(" ").join("_");
             if(country) {
                 if(filters["country"] == "all")
                     country = "all";
@@ -37,7 +38,7 @@ $(function () {
             else
                 return 2
         },
-        type: 'numeric'
+        type: "numeric"
     });
     $("#mirrors").tablesorter();
     // Filters
