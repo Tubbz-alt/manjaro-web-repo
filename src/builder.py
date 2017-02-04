@@ -66,7 +66,7 @@ class Builder():
                     html_output += "<td>{}</td>".format(state["protocol"])
                     html_output += "<td>{}</td>".format(state["last_sync"])
                     for i, branch in enumerate(BRANCHES):
-                        icon = '<td><img src="../data/{}.png" data-toggle="tooltip" data-placement="top" alt="{desc}" title="{desc}"></td>'
+                        icon = '<td><img src="../data/img/{}.png" data-toggle="tooltip" data-placement="top" alt="{desc}" title="{desc}"></td>'
                         if state["branches"]:
                             if state["branches"][i]:
                                 html_output += icon.format("up", desc="Up to date")
