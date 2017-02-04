@@ -55,12 +55,12 @@ class Builder():
                 html_output = header
                 for state in self.states:
                     if all(state["branches"]):
-                        color = "table-success"
+                        color = "success"
                     elif any(state["branches"]):
-                        color = "table-warning"
+                        color = "warning"
                     else:
-                        color = "table-danger"
-                    html_output += "<tr class=\"{}\">".format(color)
+                        color = "danger"
+                    html_output += "<tr class=\"table-{}\">".format(color)
                     html_output += "<td><a href=\"{url}\">{url}</a></td>".format(url=state["url"])
                     html_output += "<td>{}</td>".format(state["country"].replace("_", " "))
                     html_output += "<td>{}</td>".format(state["protocol"])
