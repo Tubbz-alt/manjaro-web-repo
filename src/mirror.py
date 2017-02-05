@@ -10,7 +10,7 @@ from conf import BRANCHES, PROTOCOLS
 
 class Mirror():
     """Handle all mirror's properties"""
-    
+
     def __init__(self, mirror, country):
         self.state_file = None
         self.mirror = mirror
@@ -48,6 +48,6 @@ class Mirror():
                         branch_hash = content[pos+6:pos+46]
                         self.branches.append(bool(branch_hash == hashes[i]))
             except urllib.error.URLError:
-                    print("\t\tCan't read hash from state file.")
+                print("\t\tCan't read hash from state file.")
         if not self.branches:
             self.branches = None
