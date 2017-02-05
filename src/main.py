@@ -12,9 +12,8 @@ from collections import OrderedDict
 
 
 class StatusChecker():
-    """
-    Launch of actions
-    """
+    """Launch of actions"""
+    
     def __init__(self):
         self.mirrors = list()
         self.hashes = list()
@@ -30,7 +29,6 @@ class StatusChecker():
             print("Error: can't fetch list of mirrors.")
             close()
 
-
     def get_hashes(self):
         """Get last hashes"""
         for branch in BRANCHES:
@@ -45,7 +43,6 @@ class StatusChecker():
         if len(self.hashes) < len(BRANCHES):
             print("Error: can't fetch last hashes.")
             close()
-
 
     def check_mirrors(self):
         """Check each mirror"""
@@ -63,6 +60,7 @@ class StatusChecker():
                         "last_sync": mirror.last_sync,
                         "branches": mirror.branches
                     })
+
 
 if __name__ == "__main__":
     print("--------------------------------")

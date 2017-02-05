@@ -9,9 +9,8 @@ from conf import BRANCHES, PROTOCOLS
 
 
 class Mirror():
-    """
-    Handle all mirror's properties
-    """
+    """Handle all mirror's properties"""
+    
     def __init__(self, mirror, country):
         self.state_file = None
         self.mirror = mirror
@@ -29,7 +28,6 @@ class Mirror():
         except urllib.error.URLError:
             print("\t\tCan't read state file.")
             return False
-
 
     def read_state_file(self, hashes):
         """Read infos from state file"""

@@ -9,9 +9,8 @@ from helpers import close
 
 
 class Builder():
-    """
-    Handle generation of output files
-    """
+    """Handle generation of output files"""
+
     def __init__(self, states):
         self.states = states
         self.check_folder()
@@ -26,7 +25,6 @@ class Builder():
             print("Error: can't create output folder")
             close()
 
-
     def write_json_output(self):
         """Generate JSON output"""
         try:
@@ -36,7 +34,6 @@ class Builder():
         except OSError:
             print("Error: can't write JSON output")
             close()
-
 
     def write_html_output(self):
         """Generate HTML output"""
