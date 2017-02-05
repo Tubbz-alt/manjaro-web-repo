@@ -34,7 +34,7 @@ class Mirror():
         pos = self.state_file.find("date=")
         if pos >= 0:
             mirror_date = datetime.datetime.strptime(self.state_file[pos+5:pos+24], "%Y-%m-%dT%H:%M:%S")
-        diff = int((datetime.datetime.now() - mirror_date).total_seconds())
+        diff = int((datetime.datetime.utcnow() - mirror_date).total_seconds())
         self.last_sync = str(datetime.timedelta(seconds=diff))
         protocol = urllib.parse.urlsplit(self.mirror)[0]
         if protocol in PROTOCOLS:
