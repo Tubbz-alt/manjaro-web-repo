@@ -26,13 +26,13 @@ thead, th, td {
 }
 
 .tablesorter-headerUnSorted .sort-arrow {
-    background: url("../data/img/sort.png") no-repeat;
+    background: url("../img/sort.png") no-repeat;
 }
 
 .tablesorter-headerAsc .sort-arrow {
-    background: url("../data/img/asc.png") no-repeat;
+    background: url("../img/asc.png") no-repeat;
 }
 
 .tablesorter-headerDesc .sort-arrow {
-    background: url("../data/img/desc.png") no-repeat;
+    background: url("../img/desc.png") no-repeat;
 }
