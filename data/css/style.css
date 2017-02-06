@@ -10,6 +10,29 @@ thead, th, td {
     padding: 5rem 0 1rem 0;
 }
 
+.state {
+    display: inline-block;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+}
+
+.state:not(:first-of-type) {
+    margin: 0 5px;
+}
+
+#green {
+    background-color: #dff0d8;
+}
+
+#yellow {
+    background-color: #fcf8e3;
+}
+
+#red {
+    background-color: #f2dede;
+}
+
 .tablesorter-header {
     position: relative;
     cursor: pointer;
