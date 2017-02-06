@@ -48,7 +48,7 @@ $(function () {
         },
         format: function(s, table, cell, cellIndex) {
             nb = $(cell).text().split(":");
-            return nb[0] + nb[1];
+            return +(nb[0] + "." + nb[1]);
         },
         type: "numeric"
     });
