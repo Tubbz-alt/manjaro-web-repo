@@ -10,15 +10,20 @@ thead, th, td {
     padding: 5rem 20px 1rem 20px;
 }
 
+#states {
+    margin-bottom: 8px;
+}
+
 .state {
     display: inline-block;
     vertical-align: middle;
     width: 15px;
     height: 15px;
+    margin-right: 5px;
 }
 
 .state:not(:first-of-type) {
-    margin: 0 5px;
+    margin-left: 5px;
 }
 
 #green {

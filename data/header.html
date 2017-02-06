@@ -90,9 +90,11 @@
                 <option>Vietnam</option>
             </select>
             <hr>
-            <div class="state" id="green"></div> Up to date
-            <div class="state" id="yellow"></div> Partially up to date
-            <div class="state" id="red"></div> Out of date
+            <div id="states">
+                <div class="state" id="green"></div> Up to date
+                <div class="state" id="yellow"></div> Partially up to date
+                <div class="state" id="red"></div> Out of date
+            </div>
         </div>
 
         <table id="mirrors" class="table table-sm">
@@ -101,7 +103,7 @@
                     <th>Mirror <span class="sort-arrow"></span></th>
                     <th>Country <span class="sort-arrow"></span></th>
                     <th>Protocol <span class="sort-arrow"></span></th>
-                    <th class="sorter-sync">Last sync <span class="sort-arrow"></span></th>
+                    <th class="sorter-sync">Last sync (hh:mm)<span class="sort-arrow"></span></th>
                     <th class="sorter-branch">Stable <span class="sort-arrow"></span></th>
                     <th class="sorter-branch">Testing <span class="sort-arrow"></span></th>
                     <th class="sorter-branch">Unstable <span class="sort-arrow"></span></th>
