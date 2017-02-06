@@ -33,9 +33,14 @@ class Mirror():
         """Read infos from state file"""
         pos = self.state_file.find("date=")
         if pos >= 0:
-            mirror_date = datetime.datetime.strptime(self.state_file[pos+5:pos+24], "%Y-%m-%dT%H:%M:%S")
-        diff = int((datetime.datetime.utcnow() - mirror_date).total_seconds())
-        self.last_sync = str(datetime.timedelta(seconds=diff))
+            mirror_date = datetime.datetime.strptime(self.state_file[pos+5:pos+24],
+                                                     "%Y-%m-%dT%H:%M:%S")
+        seconds = (datetime.datetime.utcnow() - mirror_date).total_seconds()
+        minutes = seconds // 60
+        elapsed_hours = minutes // 60
+        elapsed_minutes = minutes % 60
+        self.last_sync = "{}:{}".format(str(int(elapsed_hours)).zfill(2),
+                                      str(int(elapsed_minutes)).zfill(2))
         protocol = urllib.parse.urlsplit(self.mirror)[0]
         if protocol in PROTOCOLS:
             self.protocol = protocol

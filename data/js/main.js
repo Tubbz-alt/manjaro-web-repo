@@ -41,6 +41,17 @@ $(function () {
         },
         type: "numeric"
     });
+    $.tablesorter.addParser({
+        id: "sync",
+        is: function(s, table, cell, $cell) {
+            return false;
+        },
+        format: function(s, table, cell, cellIndex) {
+            nb = $(cell).text().split(":");
+            return nb[0] + nb[1];
+        },
+        type: "numeric"
+    });
     $("#mirrors").tablesorter();
     // Filters
     var filters = {
