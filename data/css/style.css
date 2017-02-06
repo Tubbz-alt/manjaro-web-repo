@@ -7,7 +7,30 @@ thead, th, td {
 }
 
 .template {
-    padding: 5rem 0 1rem 0;
+    padding: 5rem 20px 1rem 20px;
+}
+
+.state {
+    display: inline-block;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+}
+
+.state:not(:first-of-type) {
+    margin: 0 5px;
+}
+
+#green {
+    background-color: #dff0d8;
+}
+
+#yellow {
+    background-color: #fcf8e3;
+}
+
+#red {
+    background-color: #f2dede;
 }
 
 .tablesorter-header {
