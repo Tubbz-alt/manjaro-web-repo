@@ -80,15 +80,12 @@ $(function () {
 
     // Filters elts
     var country_f = document.getElementById("country-filter");
-    var http_f = document.getElementById("http-filter");
-    var https_f = document.getElementById("http-filter");
-    var ftp_f = document.getElementById("http-filter");
 
     // Filters
     var filters = {
-        "http": http_f.checked,
-        "https": https_f.checked,
-        "ftp": ftp_f.checked,
+        "http": document.getElementById("http-filter").checked,
+        "https": document.getElementById("https-filter").checked,
+        "ftp": document.getElementById("ftp-filter").checked,
         "country": country_f.value
     }
 
