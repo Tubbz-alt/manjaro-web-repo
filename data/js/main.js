@@ -40,6 +40,9 @@ $(function () {
         var table = document.getElementById("mirrors");
         // Iterate table rows
         Object.keys(table.rows).forEach(function (key) {
+            if (key == 0) {
+                return;
+            }
             var row = table.rows[key];
             var country = row.cells[1].textContent;
             if (filters.country === "all") {
