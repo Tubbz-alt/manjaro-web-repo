@@ -1,38 +1,43 @@
 $(function () {
     // Javascript is enabled
-    $("body").removeClass("no-js");
+    document.body.classList.remove("no-js");
     /*
     FUNCTIONS
     */
     function updateList() {
         // Update list with filters
-        $("#mirrors tr").each(function() {
-            var country = $("td:eq(1)", this).text();
-            country = country.split(" ").join("_").toLowerCase();
+        var table = document.getElementById("mirrors");
+        for (var i = 1; i < table.rows.length; i++) {
+            var row = table.rows[i];
+            var country = table.rows[i].cells[1].textContent;
+            if(filters["country"] == "all") {
+                country = "all";
+            } else {
+                country = country.split(" ").join("_").toLowerCase();
+            }
             if(country) {
-                if(filters["country"] == "all")
-                    country = "all";
-                var protocols = $("td:eq(2)", this).text();
+                var protocols = table.rows[i].cells[2].textContent;
                 if(protocols) {
                     protocols = protocols.split(", ");
                     if(filters["http"] && protocols.includes("http")) {
                         condition = true;
-                    }
-                    else if(filters["https"] && protocols.includes("https")) {
+                    } else if(filters["https"] && protocols.includes("https")) {
                         condition = true;
-                    }
-                    else if(filters["ftp"] && protocols.includes("ftp")) {
+                    } else if(filters["ftp"] && protocols.includes("ftp")) {
                         condition = true;
-                    }
-                    else {
+                    } else {
                         condition = false;
                     }
                     condition = condition && (filters["country"] == country);
-                    console.log(filters["country"]);
-                    $(this).toggle(condition);
+                    if(condition) {
+                        row.style.display = "table-row";
+                    }
+                    else {
+                        row.style.display = "none";
+                    }
                 }
             }
-        });
+        }
     }
 
     /*
@@ -40,6 +45,7 @@ $(function () {
     */
     // Enable tooltips
     $('[data-toggle="tooltip"]').tooltip()
+
     // Enable table sorting
     $.tablesorter.addParser({
         id: "branch",
@@ -67,24 +73,37 @@ $(function () {
         },
         type: "numeric"
     });
+
     $("#mirrors").tablesorter();
+
+    // Filters elts
+    var country_f = document.getElementById("country-filter");
+    var http_f = document.getElementById("http-filter");
+    var https_f = document.getElementById("http-filter");
+    var ftp_f = document.getElementById("http-filter");
+
     // Filters
     var filters = {
-        "country": $("#country-filter").val(),
-        "http": $("#http-filter").is(":checked"),
-        "https": $("#https-filter").is(":checked"),
-        "ftp": $("#ftp-filter").is(":checked")
+        "http": http_f.checked,
+        "https": https_f.checked,
+        "ftp": ftp_f.checked,
+        "country": country_f.value
     }
+
     // Refresh list at start
     updateList();
+
     // Events on inputs
-    $("#country-filter").change(function() {
-        filters["country"] = $(this).val();
-        updateList();
-    });
-    $('input[type="checkbox"]').change(function() {
-        var protocol = $(this).attr("id").split("-")[0];
-        filters[protocol] = $(this).is(":checked");
+    var checkboxes = document.querySelectorAll(".custom-control-input");
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].addEventListener("change", function() {
+            var protocol = this.id.split("-")[0];
+            filters[protocol] = this.checked;
+            updateList();
+        });
+    }
+    country_f.addEventListener("change", function() {
+        filters["country"] = this.value;
         updateList();
     });
 });
