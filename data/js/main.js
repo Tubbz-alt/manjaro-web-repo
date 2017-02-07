@@ -11,9 +11,22 @@ $(function () {
             if(country) {
                 if(filters["country"] == "all")
                     country = "all";
-                var protocol = $("td:eq(2)", this).text();
-                if(protocol) {
-                    condition = filters["country"] == country && filters[protocol];
+                var protocols = $("td:eq(2)", this).text();
+                if(protocols) {
+                    condition = filters["country"] == country;
+                    protocols = protocols.split(", ");
+                    if(filters["http"] && protocols.includes("http")) {
+                        condition = condition && true;
+                    }
+                    else if(filters["https"] && protocols.includes("https")) {
+                        condition = condition && true;
+                    }
+                    else if(filters["ftp"] && protocols.includes("ftp")) {
+                        condition = condition && true;
+                    }
+                    else {
+                        condition = condition && false;
+                    }
                     $(this).toggle(condition);
                 }
             }

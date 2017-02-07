@@ -3,19 +3,18 @@
 import json
 import urllib.request
 import datetime
-import urllib.parse
 
-from conf import BRANCHES, PROTOCOLS
+from conf import BRANCHES
 
 
 class Mirror():
     """Handle all mirror's properties"""
 
-    def __init__(self, mirror, country):
+    def __init__(self, mirror, country, protocols):
         self.state_file = None
         self.mirror = mirror
         self.country = country
-        self.protocol = str()
+        self.protocols = protocols
         self.last_sync = str()
         self.branches = list()
 
@@ -42,8 +41,6 @@ class Mirror():
         self.last_sync = "{}:{}".format(str(int(elapsed_hours)).zfill(2),
                                       str(int(elapsed_minutes)).zfill(2))
         protocol = urllib.parse.urlsplit(self.mirror)[0]
-        if protocol in PROTOCOLS:
-            self.protocol = protocol
         for i, branch in enumerate(BRANCHES):
             try:
                 with urllib.request.urlopen(self.mirror + branch + "/state") as response:
