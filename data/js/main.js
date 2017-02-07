@@ -1,90 +1,104 @@
 $(function () {
     // Javascript is enabled
-    $("body").removeClass("no-js");
-    /*
-    FUNCTIONS
-    */
-    function updateList() {
-        // Update list with filters
-        $("#mirrors tr").each(function() {
-            var country = $("td:eq(1)", this).text();
-            country = country.split(" ").join("_").toLowerCase();
-            if(country) {
-                if(filters["country"] == "all")
-                    country = "all";
-                var protocols = $("td:eq(2)", this).text();
-                if(protocols) {
-                    protocols = protocols.split(", ");
-                    if(filters["http"] && protocols.includes("http")) {
-                        condition = true;
-                    }
-                    else if(filters["https"] && protocols.includes("https")) {
-                        condition = true;
-                    }
-                    else if(filters["ftp"] && protocols.includes("ftp")) {
-                        condition = true;
-                    }
-                    else {
-                        condition = false;
-                    }
-                    condition = condition && (filters["country"] == country);
-                    console.log(filters["country"]);
-                    $(this).toggle(condition);
-                }
-            }
-        });
-    }
+    document.body.classList.remove("no-js");
 
-    /*
-    MAIN
-    */
-    // Enable tooltips
-    $('[data-toggle="tooltip"]').tooltip()
     // Enable table sorting
     $.tablesorter.addParser({
         id: "branch",
-        is: function(s, table, cell, $cell) {
+        is: function (s, table, cell, $cell) {
             return false;
         },
-        format: function(s, table, cell, cellIndex) {
-            if($(cell).html().includes("up"))
-                return 0
-            else if($(cell).html().includes("out"))
-                return 1
-            else
-                return 2
+        format: function (s, table, cell, cellIndex) {
+            if ($(cell).html().includes("up")) {
+                return 0;
+            } else if ($(cell).html().includes("out")) {
+                return 1;
+            } else {
+                return 2;
+            }
         },
         type: "numeric"
     });
     $.tablesorter.addParser({
         id: "sync",
-        is: function(s, table, cell, $cell) {
+        is: function (s, table, cell, $cell) {
             return false;
         },
-        format: function(s, table, cell, cellIndex) {
+        format: function (s, table, cell, cellIndex) {
             nb = $(cell).text().split(":");
             return +(nb[0] + "." + nb[1]);
         },
         type: "numeric"
     });
     $("#mirrors").tablesorter();
+
+    // Enable tooltips
+    $("[data-toggle=\"tooltip\"]").tooltip();
+
+    function updateList(filters) {
+        // Update list with filters
+        var table = document.getElementById("mirrors");
+        // Iterate table rows
+        Object.keys(table.rows).forEach(function (key) {
+            if (key == 0) {
+                return;
+            }
+            var row = table.rows[key];
+            var country = row.cells[1].textContent;
+            if (filters.country === "all") {
+                country = "all";
+            } else {
+                country = country.split(" ").join("_").toLowerCase();
+            }
+            if (country) {
+                var protocols = row.cells[2].textContent;
+                if (protocols) {
+                    protocols = protocols.split(", ");
+                    // Check filters
+                    var condition = false;
+                    if (filters.http && protocols.includes("http")) {
+                        condition = true;
+                    } else if (filters.https && protocols.includes("https")) {
+                        condition = true;
+                    } else if (filters.ftp && protocols.includes("ftp")) {
+                        condition = true;
+                    }
+                    condition = condition && (filters.country === country);
+                    if (condition) {
+                        row.style.display = "table-row";
+                    } else {
+                        row.style.display = "none";
+                    }
+                }
+            }
+        });
+    }
+
+    // Filters elts
+    var country_f = document.getElementById("country-filter");
+
     // Filters
     var filters = {
-        "country": $("#country-filter").val(),
-        "http": $("#http-filter").is(":checked"),
-        "https": $("#https-filter").is(":checked"),
-        "ftp": $("#ftp-filter").is(":checked")
-    }
+        "http": document.getElementById("http-filter").checked,
+        "https": document.getElementById("https-filter").checked,
+        "ftp": document.getElementById("ftp-filter").checked,
+        "country": country_f.value
+    };
+
     // Refresh list at start
-    updateList();
+    updateList(filters);
+
     // Events on inputs
-    $("#country-filter").change(function() {
-        filters["country"] = $(this).val();
-        updateList();
+    var checkboxes = document.querySelectorAll(".custom-control-input");
+    Object.keys(checkboxes).forEach(function (key) {
+        checkboxes[key].addEventListener("change", function () {
+            var protocol = checkboxes[key].id.split("-")[0];
+            filters[protocol] = checkboxes[key].checked;
+            updateList(filters);
+        });
     });
-    $('input[type="checkbox"]').change(function() {
-        var protocol = $(this).attr("id").split("-")[0];
-        filters[protocol] = $(this).is(":checked");
-        updateList();
+    country_f.addEventListener("change", function () {
+        filters.country = country_f.value;
+        updateList(filters);
     });
 });
