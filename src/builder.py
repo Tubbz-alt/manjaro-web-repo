@@ -60,7 +60,7 @@ class Builder():
                     html_output += "<tr class=\"table-{}\">".format(color)
                     html_output += "<td><a href=\"{url}\">{url}</a></td>".format(url=state["url"])
                     html_output += "<td>{}</td>".format(state["country"].replace("_", " "))
-                    html_output += "<td>{}</td>".format(state["protocol"])
+                    html_output += "<td>{}</td>".format(", ".join(state["protocols"]))
                     html_output += "<td>{}</td>".format(state["last_sync"])
                     icon = '<td><img src="../data/img/{}.png" data-toggle="tooltip" data-placement="top" alt="{desc}" title="{desc}"></td>'
                     for i, branch in enumerate(BRANCHES):

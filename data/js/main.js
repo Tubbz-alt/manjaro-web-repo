@@ -5,15 +5,30 @@ $(function () {
     FUNCTIONS
     */
     function updateList() {
+        // Update list with filters
         $("#mirrors tr").each(function() {
             var country = $("td:eq(1)", this).text();
-            country = country.split(" ").join("_");
+            country = country.split(" ").join("_").toLowerCase();
             if(country) {
                 if(filters["country"] == "all")
                     country = "all";
-                var protocol = $("td:eq(2)", this).text();
-                if(protocol) {
-                    condition = filters["country"] == country && filters[protocol];
+                var protocols = $("td:eq(2)", this).text();
+                if(protocols) {
+                    protocols = protocols.split(", ");
+                    if(filters["http"] && protocols.includes("http")) {
+                        condition = true;
+                    }
+                    else if(filters["https"] && protocols.includes("https")) {
+                        condition = true;
+                    }
+                    else if(filters["ftp"] && protocols.includes("ftp")) {
+                        condition = true;
+                    }
+                    else {
+                        condition = false;
+                    }
+                    condition = condition && (filters["country"] == country);
+                    console.log(filters["country"]);
                     $(this).toggle(condition);
                 }
             }
@@ -55,20 +70,20 @@ $(function () {
     $("#mirrors").tablesorter();
     // Filters
     var filters = {
-        "country": "all",
-        "http": true,
-        "https": true,
-        "ftp": true
+        "country": $("#country-filter").val(),
+        "http": $("#http-filter").is(":checked"),
+        "https": $("#https-filter").is(":checked"),
+        "ftp": $("#ftp-filter").is(":checked")
     }
-
-    $("#country-select").change(function() {
-        var country = $(this).find("option:selected").text();
-        country = country.split(" ").join("_");
-        filters["country"] = (country == "All_countries") ? "all" : country;
+    // Refresh list at start
+    updateList();
+    // Events on inputs
+    $("#country-filter").change(function() {
+        filters["country"] = $(this).val();
         updateList();
     });
     $('input[type="checkbox"]').change(function() {
-        var protocol = $(this).parent().find(".custom-control-description").text().toLowerCase();
+        var protocol = $(this).attr("id").split("-")[0];
         filters[protocol] = $(this).is(":checked");
         updateList();
     });

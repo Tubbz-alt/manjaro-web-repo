@@ -49,13 +49,14 @@ class StatusChecker():
         for country in self.mirrors:
             print("{}:".format(country))
             for mirror in self.mirrors[country]:
-                mirror = Mirror(mirror, country)
+                protocols = self.mirrors[country][mirror]["protocols"]
+                mirror = Mirror(mirror, country, protocols)
                 print("\t{}".format(mirror.mirror))
                 if mirror.get_state_file():
                     mirror.read_state_file(self.hashes)
                     self.states.append({
                         "url": mirror.mirror,
-                        "protocol": mirror.protocol,
+                        "protocols": mirror.protocols,
                         "country": mirror.country,
                         "last_sync": mirror.last_sync,
                         "branches": mirror.branches
@@ -65,7 +66,7 @@ class StatusChecker():
 if __name__ == "__main__":
     print("--------------------------------")
     print("----Manjaro mirror's tracker----")
-    print("--------------------------------\n")
+    print("--------------------------------")
     status_checker = StatusChecker()
     status_checker.get_mirrors()
     status_checker.get_hashes()
