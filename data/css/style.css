@@ -44,11 +44,8 @@ thead, th, td {
 }
 
 .tablesorter-header .sort-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 0;
-    display: block;
+    display: inline-block;
+    vertical-align: middle;
     width: 10px;
     height: 20px;
 }
