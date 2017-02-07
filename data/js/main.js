@@ -1,9 +1,39 @@
 $(function () {
     // Javascript is enabled
     document.body.classList.remove("no-js");
-    /*
-    FUNCTIONS
-    */
+
+    // Enable table sorting
+    $.tablesorter.addParser({
+        id: "branch",
+        is: function(s, table, cell, $cell) {
+            return false;
+        },
+        format: function(s, table, cell, cellIndex) {
+            if($(cell).html().includes("up"))
+                return 0
+            else if($(cell).html().includes("out"))
+                return 1
+            else
+                return 2
+        },
+        type: "numeric"
+    });
+    $.tablesorter.addParser({
+        id: "sync",
+        is: function(s, table, cell, $cell) {
+            return false;
+        },
+        format: function(s, table, cell, cellIndex) {
+            nb = $(cell).text().split(":");
+            return +(nb[0] + "." + nb[1]);
+        },
+        type: "numeric"
+    });
+    $("#mirrors").tablesorter();
+
+    // Enable tooltips
+    $('[data-toggle="tooltip"]').tooltip()
+
     function updateList() {
         // Update list with filters
         var table = document.getElementById("mirrors");
@@ -41,42 +71,6 @@ $(function () {
             }
         }
     }
-
-    /*
-    MAIN
-    */
-    // Enable tooltips
-    $('[data-toggle="tooltip"]').tooltip()
-
-    // Enable table sorting
-    $.tablesorter.addParser({
-        id: "branch",
-        is: function(s, table, cell, $cell) {
-            return false;
-        },
-        format: function(s, table, cell, cellIndex) {
-            if($(cell).html().includes("up"))
-                return 0
-            else if($(cell).html().includes("out"))
-                return 1
-            else
-                return 2
-        },
-        type: "numeric"
-    });
-    $.tablesorter.addParser({
-        id: "sync",
-        is: function(s, table, cell, $cell) {
-            return false;
-        },
-        format: function(s, table, cell, cellIndex) {
-            nb = $(cell).text().split(":");
-            return +(nb[0] + "." + nb[1]);
-        },
-        type: "numeric"
-    });
-
-    $("#mirrors").tablesorter();
 
     // Filters elts
     var country_f = document.getElementById("country-filter");
