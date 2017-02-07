@@ -35,7 +35,7 @@ $(function () {
     // Enable tooltips
     $("[data-toggle=\"tooltip\"]").tooltip();
 
-    function updateList() {
+    function updateList(filters) {
         // Update list with filters
         var table = document.getElementById("mirrors");
         // Iterate table rows
@@ -83,7 +83,7 @@ $(function () {
     };
 
     // Refresh list at start
-    updateList();
+    updateList(filters);
 
     // Events on inputs
     var checkboxes = document.querySelectorAll(".custom-control-input");
@@ -91,11 +91,11 @@ $(function () {
         checkboxes[key].addEventListener("change", function () {
             var protocol = checkboxes[key].id.split("-")[0];
             filters[protocol] = checkboxes[key].checked;
-            updateList();
+            updateList(filters);
         });
     });
     country_f.addEventListener("change", function () {
         filters.country = country_f.value;
-        updateList();
+        updateList(filters);
     });
 });
