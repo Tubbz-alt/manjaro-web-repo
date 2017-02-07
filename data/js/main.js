@@ -7,6 +7,7 @@ $(function () {
     function updateList() {
         // Update list with filters
         var table = document.getElementById("mirrors");
+        // Iterate table rows
         for (var i = 1; i < table.rows.length; i++) {
             var row = table.rows[i];
             var country = table.rows[i].cells[1].textContent;
@@ -19,6 +20,7 @@ $(function () {
                 var protocols = table.rows[i].cells[2].textContent;
                 if(protocols) {
                     protocols = protocols.split(", ");
+                    // Check filters
                     if(filters["http"] && protocols.includes("http")) {
                         condition = true;
                     } else if(filters["https"] && protocols.includes("https")) {
