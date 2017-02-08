@@ -30,7 +30,7 @@ $(function () {
         },
         type: "numeric"
     });
-    $("#mirrors").tablesorter();
+    $("#mirrors").tablesorter({sortList: [[1, 0]]});
 
     // Enable tooltips
     $("[data-toggle=\"tooltip\"]").tooltip();
