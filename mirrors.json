@@ -134,8 +134,8 @@
         "http://ftp.tu-chemnitz.de/pub/linux/manjaro/": {
             "protocols": ["http"]
         },
-        "http://mirror.netzspielplatz.de/manjaro/packages/": {
-            "protocols": ["http"]
+        "https://mirror.netzspielplatz.de/manjaro/packages/": {
+            "protocols": ["https"]
         },
         "https://mirror.netcologne.de/manjaro/": {
             "protocols": ["https"]
