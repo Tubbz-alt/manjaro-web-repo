@@ -1,9 +1,4 @@
 {
-    "Africa": {
-        "http://mirror.is.co.za/mirrors/manjaro.org/": {
-            "protocols": ["http"]
-        }
-    },
     "Australia": {
         "http://mirror.ventraip.net.au/Manjaro/": {
             "protocols": ["http"]
@@ -242,6 +237,11 @@
     },
     "Singapore": {
         "http://download.nus.edu.sg/mirror/manjaro/": {
+            "protocols": ["http"]
+        }
+    },
+    "South_Africa": {
+        "http://mirror.is.co.za/mirrors/manjaro.org/": {
             "protocols": ["http"]
         }
     },
