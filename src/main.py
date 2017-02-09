@@ -4,11 +4,11 @@ import json
 import urllib.request
 import time
 
+from collections import OrderedDict
 from conf import MIRRORS_URL, BRANCHES
 from mirror import Mirror
 from builder import Builder
 from helpers import close
-from collections import OrderedDict
 
 
 class StatusChecker():
