@@ -13,7 +13,7 @@ from helpers import close
 
 class StatusChecker():
     """Launch of actions"""
-    
+
     def __init__(self):
         self.mirrors = list()
         self.hashes = list()
@@ -49,19 +49,19 @@ class StatusChecker():
         for country in self.mirrors:
             print("{}:".format(country))
             for mirror in self.mirrors[country]:
+                print("\t{}".format(mirror))
                 protocols = self.mirrors[country][mirror]["protocols"]
                 mirror = Mirror(mirror, country, protocols)
-                print("\t{}".format(mirror.mirror))
-                if mirror.get_state_file():
-                    mirror.read_state_file(self.hashes)
-                    self.states.append({
-                        "url": mirror.mirror,
-                        "protocols": mirror.protocols,
-                        "country": mirror.country,
-                        "last_sync": mirror.last_sync,
-                        "branches": mirror.branches
-                    })
-
+                mirror.get_state_file()
+                mirror.read_state_file(self.hashes)
+                mirror_status = {
+                    "url": mirror.mirror,
+                    "protocols": mirror.protocols,
+                    "country": mirror.country,
+                    "last_sync": mirror.last_sync,
+                    "branches": mirror.branches
+                }
+                self.states.append(mirror_status)
 
 if __name__ == "__main__":
     print("--------------------------------")

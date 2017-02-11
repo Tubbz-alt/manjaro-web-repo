@@ -10,11 +10,11 @@ $(function () {
         },
         format: function (s, table, cell, cellIndex) {
             if ($(cell).html().includes("up")) {
-                return 0;
-            } else if ($(cell).html().includes("out")) {
                 return 1;
+            } else if ($(cell).html().includes("out")) {
+                return 0;
             } else {
-                return 2;
+                return -1;
             }
         },
         type: "numeric"

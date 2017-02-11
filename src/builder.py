@@ -51,9 +51,9 @@ class Builder():
                 header = header.replace("DATE", datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
                 html_output = header
                 for state in self.states:
-                    if all(state["branches"]):
+                    if all(branch == 1 for branch in state["branches"]):
                         color = "success"
-                    elif any(state["branches"]):
+                    elif any(branch == 1 for branch in state["branches"]):
                         color = "warning"
                     else:
                         color = "danger"
@@ -61,15 +61,16 @@ class Builder():
                     html_output += "<td><a href=\"{url}\">{url}</a></td>".format(url=state["url"])
                     html_output += "<td>{}</td>".format(state["country"].replace("_", " "))
                     html_output += "<td>{}</td>".format(", ".join(state["protocols"]))
+                    if state["last_sync"] == -1:
+                        state["last_sync"] = "N/A"
                     html_output += "<td>{}</td>".format(state["last_sync"])
                     icon = '<td><img src="../data/img/{}.png" data-toggle="tooltip" data-placement="top" alt="{desc}" title="{desc}"></td>'
                     for i, branch in enumerate(BRANCHES):
-                        if state["branches"]:
-                            if state["branches"][i]:
-                                html_output += icon.format("up", desc="Up to date")
-                            else:
-                                html_output += icon.format("out", desc="Out of date")
-                        else:
+                        if state["branches"][i] == 1:
+                            html_output += icon.format("up", desc="Up to date")
+                        elif state["branches"][i] == 0:
+                            html_output += icon.format("out", desc="Out of date")
+                        elif state["branches"][i] == -1:
                             html_output += icon.format("unknown", desc="Unknown")
                     html_output += "</tr>"
                 html_output += footer
