@@ -22,7 +22,7 @@
     },
     "Belgium": {
         "http://ftp.belnet.be/manjaro/": {
-            "protocols": ["http"]
+            "protocols": ["ftp", "http"]
         },
         "https://manjaro.cu.be/": {
             "protocols": ["https"]
@@ -65,7 +65,7 @@
             "protocols": ["http"]
         },
         "http://ftp.cuhk.edu.hk/pub/Linux/manjaro/": {
-            "protocols": ["http"]
+            "protocols": ["ftp", "http"]
         },
         "http://mirrors.tuna.tsinghua.edu.cn/manjaro/": {
             "protocols": ["http"]
@@ -113,7 +113,7 @@
             "protocols": ["http"]
         },
         "http://ftp.free.org/mirrors/repo.manjaro.org/repos/": {
-            "protocols": ["http"]
+            "protocols": ["ftp", "http"]
         },
         "https://fr.mirror.babylon.network/manjaro/": {
             "protocols": ["https"]
@@ -124,10 +124,10 @@
             "protocols": ["http"]
         },
         "http://ftp.halifax.rwth-aachen.de/manjaro/": {
-            "protocols": ["http"]
+            "protocols": ["ftp", "http"]
         },
         "http://ftp.tu-chemnitz.de/pub/linux/manjaro/": {
-            "protocols": ["http"]
+            "protocols": ["ftp", "http"]
         },
         "https://mirror.netzspielplatz.de/manjaro/packages/": {
             "protocols": ["https"]
@@ -153,7 +153,7 @@
     },
     "Greece": {
         "http://ftp.cc.uoc.gr/mirrors/linux/manjaro/": {
-            "protocols": ["http"]
+            "protocols": ["ftp", "http"]
         }
     },
     "Hungary": {
@@ -174,7 +174,7 @@
     },
     "Ireland": {
         "https://ftp.heanet.ie/mirrors/manjaro/": {
-            "protocols": ["https"]
+            "protocols": ["ftp", "https"]
         }
     },
     "Italy": {
@@ -190,18 +190,18 @@
     },
     "Japan": {
         "http://ftp.tsukuba.wide.ad.jp/Linux/manjaro/": {
-            "protocols": ["http"]
+            "protocols": ["ftp", "http"]
         },
         "http://ftp.riken.jp/Linux/manjaro/": {
-            "protocols": ["http"]
+            "protocols": ["ftp", "http"]
         }
     },
     "Netherlands": {
         "http://ftp.nluug.nl/pub/os/Linux/distr/manjaro/": {
-            "protocols": ["http"]
+            "protocols": ["ftp", "http"]
         },
         "http://ftp.snt.utwente.nl/pub/linux/manjaro/": {
-            "protocols": ["http"]
+            "protocols": ["ftp", "http"]
         },
         "https://nl.mirror.babylon.network/manjaro/": {
             "protocols": ["https"]
@@ -219,7 +219,7 @@
     },
     "Portugal": {
         "http://ftp.dei.uc.pt/pub/linux/manjaro/": {
-            "protocols": ["http"]
+            "protocols": ["ftp", "http"]
         },
         "http://repo.barata.website/": {
             "protocols": ["http"]
@@ -230,7 +230,7 @@
             "protocols": ["http"]
         },
         "http://ftp.lug.ro/manjaro/": {
-            "protocols": ["http"]
+            "protocols": ["ftp", "http"]
         }
     },
     "Russia": {
@@ -253,7 +253,7 @@
     },
     "Sweden": {
         "https://ftp.lysator.liu.se/pub/manjaro/": {
-            "protocols": ["https"]
+            "protocols": ["ftp", "https"]
         },
         "http://mirror.zetup.net/manjaro/": {
             "protocols": ["http"]
@@ -266,7 +266,7 @@
     },
     "Turkey": {
         "http://ftp.linux.org.tr/manjaro/": {
-            "protocols": ["http"]
+            "protocols": ["ftp", "http"]
         }
     },
     "United_Kingdom": {
