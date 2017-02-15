@@ -10,18 +10,18 @@ from conf import BRANCHES
 class Mirror():
     """Handle all mirror's properties"""
 
-    def __init__(self, mirror, country, protocols):
+    def __init__(self, mirror):
         self.state_file = None
-        self.mirror = mirror
-        self.country = country
-        self.protocols = protocols
+        self.url = mirror["url"]
+        self.country = mirror["country"]
+        self.protocols = mirror["protocols"]
         self.last_sync = str()
         self.branches = list()
 
     def get_state_file(self):
         """Fetch state file"""
         try:
-            with urllib.request.urlopen(self.mirror + "state") as state_file:
+            with urllib.request.urlopen(self.url + "state") as state_file:
                 self.state_file = state_file.read().decode("utf-8")
         except urllib.error.URLError:
             print("\t\tCan't read state file.")
@@ -43,7 +43,7 @@ class Mirror():
                     str(int(elapsed_minutes)).zfill(2))
             for i, branch in enumerate(BRANCHES):
                 try:
-                    with urllib.request.urlopen(self.mirror + branch + "/state") as response:
+                    with urllib.request.urlopen(self.url + branch + "/state") as response:
                         content = response.read().decode("utf-8")
                         pos = content.find("state=")
                         if pos >= 0:

@@ -46,22 +46,19 @@ class StatusChecker():
 
     def check_mirrors(self):
         """Check each mirror"""
-        for country in self.mirrors:
-            print("{}:".format(country))
-            for mirror in self.mirrors[country]:
-                print("\t{}".format(mirror))
-                protocols = self.mirrors[country][mirror]["protocols"]
-                mirror = Mirror(mirror, country, protocols)
-                mirror.get_state_file()
-                mirror.read_state_file(self.hashes)
-                mirror_status = {
-                    "url": mirror.mirror,
-                    "protocols": mirror.protocols,
-                    "country": mirror.country,
-                    "last_sync": mirror.last_sync,
-                    "branches": mirror.branches
-                }
-                self.states.append(mirror_status)
+        for mirror in self.mirrors:
+            print("{}: {}".format(mirror["country"], mirror["url"]))
+            mirror = Mirror(mirror)
+            mirror.get_state_file()
+            mirror.read_state_file(self.hashes)
+            mirror_status = {
+                "url": mirror.url,
+                "protocols": mirror.protocols,
+                "country": mirror.country,
+                "last_sync": mirror.last_sync,
+                "branches": mirror.branches
+            }
+            self.states.append(mirror_status)
 
 if __name__ == "__main__":
     print("--------------------------------")
