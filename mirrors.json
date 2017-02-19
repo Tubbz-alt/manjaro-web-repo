@@ -264,9 +264,9 @@
     },
     {
         "country": "Germany",
-        "url": "https://mirrors.cicku.me/manjaro/",
+        "url": "http://mirrors.cicku.me/manjaro/",
         "protocols": [
-            "https"
+            "http"
         ]
     },
     {
