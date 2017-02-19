@@ -52,10 +52,7 @@ class Mirror():
                         pos = content.find("state=")
                         if pos >= 0:
                             branch_hash = content[pos+6:pos+46]
-                            if branch_hash == hashes[i]:
-                                self.branches.append(1)
-                            else:
-                                self.branches.append(0)
+                            self.branches.append(int(branch_hash == hashes[i]))
                 except urllib.error.URLError as e:
                     self.logger.error("{}: can't read hash from state file".format(url), e, False)
         if not self.last_sync:
