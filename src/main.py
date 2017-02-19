@@ -20,7 +20,7 @@ class StatusChecker():
         self.mirrors = list()
         self.hashes = list()
         self.states = list()
-        self.logger.info("Manjaro-web-repo is starting")
+        self.logger.info("manjaro-web-repo is starting")
 
     def get_mirrors(self):
         """Get list of mirrors"""

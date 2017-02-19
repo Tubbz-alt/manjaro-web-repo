@@ -24,7 +24,7 @@ class Logger():
 
     def info(self, msg):
         """Add line in mwr.log"""
-        print(msg)
+        print(msg.capitalize())
         try:
             with open(self.log_path, "a") as log_file:
                 date = datetime.datetime.now().strftime("%c")
@@ -48,5 +48,5 @@ class Logger():
 
     def close(self):
         """Close manjaro-web-repo"""
-        self.info("Manjaro-web-repo is stopping")
+        self.info("manjaro-web-repo is stopping")
         exit()
