@@ -10,9 +10,7 @@ thead, th, td {
     padding: 5rem 20px 1rem 20px;
 }
 
-#states {
-    margin-bottom: 8px;
-}
+#states { margin-bottom: 10px; }
 
 .state {
     display: inline-block;
@@ -22,21 +20,13 @@ thead, th, td {
     margin-right: 5px;
 }
 
-.state:not(:first-of-type) {
-    margin-left: 5px;
-}
+.state:not(:first-of-type) { margin-left: 5px; }
 
-#green {
-    background-color: #dff0d8;
-}
+#green { background-color: #dff0d8; }
 
-#yellow {
-    background-color: #fcf8e3;
-}
+#yellow { background-color: #fcf8e3; }
 
-#red {
-    background-color: #f2dede;
-}
+#red { background-color: #f2dede; }
 
 .tablesorter-header {
     position: relative;

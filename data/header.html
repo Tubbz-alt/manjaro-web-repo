@@ -35,62 +35,64 @@
 
     <div class="container template">
         <div id="filters">
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="http-filter" class="custom-control-input" checked>
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">HTTP</span>
-            </label>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="https-filter" class="custom-control-input" checked>
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">HTTPS</span>
-            </label>
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" id="ftp-filter" class="custom-control-input" checked>
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">FTP</span>
-            </label>
-            <select id="country-filter" class="custom-select">
-                <option value="all" selected>All countries</option>
-                <option value="australia">Australia</option>
-                <option value="austria">Austria</option>
-                <option value="belarus">Belarus</option>
-                <option value="belgium">Belgium</option>
-                <option value="brasil">Brasil</option>
-                <option value="bulgaria">Bulgaria</option>
-                <option value="canada">Canada</option>
-                <option value="chile">Chile</option>
-                <option value="china">China</option>
-                <option value="colombia">Colombia</option>
-                <option value="costa_rica">Costa Rica</option>
-                <option value="czech">Czech</option>
-                <option value="denmark">Denmark</option>
-                <option value="ecuador">Ecuador</option>
-                <option value="france">France</option>
-                <option value="germany">Germany</option>
-                <option value="greece">Greece</option>
-                <option value="hungary">Hungary</option>
-                <option value="indonesia">Indonesia</option>
-                <option value="ireland">Ireland</option>
-                <option value="italy">Italy</option>
-                <option value="japan">Japan</option>
-                <option value="netherlands">Netherlands</option>
-                <option value="philippines">Philippines</option>
-                <option value="poland">Poland</option>
-                <option value="portugal">Portugal</option>
-                <option value="romania">Romania</option>
-                <option value="russia">Russia</option>
-                <option value="singapore">Singapore</option>
-                <option value="south_africa">South Africa</option>
-                <option value="sweden">Sweden</option>
-                <option value="taiwan">Taiwan</option>
-                <option value="turkey">Turkey</option>
-                <option value="united_kingdom">United Kingdom</option>
-                <option value="united_states">United States</option>
-                <option value="vietnam">Vietnam</option>
-            </select>
-            <hr>
+            <div class="form-inline">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" id="http-filter" class="custom-control-input" checked>
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">HTTP</span>
+                </label>
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" id="https-filter" class="custom-control-input" checked>
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">HTTPS</span>
+                </label>
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" id="ftp-filter" class="custom-control-input" checked>
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">FTP</span>
+                </label>
+                <select id="country-filter" class="custom-select">
+                    <option value="all" selected>All countries</option>
+                    <option value="australia">Australia</option>
+                    <option value="austria">Austria</option>
+                    <option value="belarus">Belarus</option>
+                    <option value="belgium">Belgium</option>
+                    <option value="brasil">Brasil</option>
+                    <option value="bulgaria">Bulgaria</option>
+                    <option value="canada">Canada</option>
+                    <option value="chile">Chile</option>
+                    <option value="china">China</option>
+                    <option value="colombia">Colombia</option>
+                    <option value="costa_rica">Costa Rica</option>
+                    <option value="czech">Czech</option>
+                    <option value="denmark">Denmark</option>
+                    <option value="ecuador">Ecuador</option>
+                    <option value="france">France</option>
+                    <option value="germany">Germany</option>
+                    <option value="greece">Greece</option>
+                    <option value="hungary">Hungary</option>
+                    <option value="indonesia">Indonesia</option>
+                    <option value="ireland">Ireland</option>
+                    <option value="italy">Italy</option>
+                    <option value="japan">Japan</option>
+                    <option value="netherlands">Netherlands</option>
+                    <option value="philippines">Philippines</option>
+                    <option value="poland">Poland</option>
+                    <option value="portugal">Portugal</option>
+                    <option value="romania">Romania</option>
+                    <option value="russia">Russia</option>
+                    <option value="singapore">Singapore</option>
+                    <option value="south_africa">South Africa</option>
+                    <option value="sweden">Sweden</option>
+                    <option value="taiwan">Taiwan</option>
+                    <option value="turkey">Turkey</option>
+                    <option value="united_kingdom">United Kingdom</option>
+                    <option value="united_states">United States</option>
+                    <option value="vietnam">Vietnam</option>
+                </select>
+            </div>
         </div>
+        <hr>
         <div id="states">
             <div class="state" id="green"></div> Up to date
             <div class="state" id="yellow"></div> Partially up to date
