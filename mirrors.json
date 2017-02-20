@@ -129,6 +129,14 @@
         ]
     },
     {
+        "country": "China",
+        "url": "https://mirrors.zju.edu.cn/manjaro/",
+        "protocols": [
+            "http"
+            "https"
+        ]
+    },
+    {
         "country": "Colombia",
         "url": "http://mirror.edatel.net.co/manjaro/",
         "protocols": [
