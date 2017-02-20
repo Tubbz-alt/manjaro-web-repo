@@ -132,7 +132,7 @@
         "country": "China",
         "url": "https://mirrors.zju.edu.cn/manjaro/",
         "protocols": [
-            "http"
+            "http",
             "https"
         ]
     },
