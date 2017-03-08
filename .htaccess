@@ -1,4 +1,5 @@
-<filesMatch ".(html|htm)$">
+RewriteEngine On
+<FilesMatch "\.(html|htm)$">
 	FileETag None
 	<ifModule mod_headers.c>
 		Header unset ETag
@@ -6,4 +7,4 @@
 		Header set Pragma "no-cache"
 		Header set Expires "Wed, 08 Jan 1975 05:00:00 GMT"
 	</ifModule>
-</filesMatch>
+</FilesMatch>
