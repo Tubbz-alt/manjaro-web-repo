@@ -272,13 +272,6 @@
     },
     {
         "country": "Germany",
-        "url": "http://mirrors.cicku.me/manjaro/",
-        "protocols": [
-            "http"
-        ]
-    },
-    {
-        "country": "Germany",
         "url": "https://repo.stdout.net/manjaro/",
         "protocols": [
             "http",
@@ -455,13 +448,6 @@
         "protocols": [
             "http",
             "https"
-        ]
-    },
-    {
-        "country": "Russia",
-        "url": "ftp://kibo.remi.lu/pub/",
-        "protocols": [
-            "ftp"
         ]
     },
     {
