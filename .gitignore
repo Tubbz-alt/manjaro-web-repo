@@ -92,3 +92,4 @@ ENV/
 
 # Generated files
 docs/
+logs/

@@ -1,39 +1,39 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import json
 import datetime
 import os
 
+from logger import Logger
 from conf import BRANCHES, VERSION, ROOT_FOLDER, OUTPUT_FOLDER
-from helpers import close
 
 
 class Builder():
     """Handle generation of output files"""
 
     def __init__(self, states):
+        self.logger = Logger()
         self.states = states
         self.check_folder()
         self.json_path = ROOT_FOLDER + OUTPUT_FOLDER + "status.json"
         self.html_path = ROOT_FOLDER + OUTPUT_FOLDER + "index.html"
 
     def check_folder(self):
+        """Check if output folder exists"""
         try:
             if not os.path.isdir(ROOT_FOLDER + OUTPUT_FOLDER):
                 os.makedirs(ROOT_FOLDER + OUTPUT_FOLDER)
-        except OSError:
-            print("Error: can't create output folder")
-            close()
+        except OSError as e:
+            self.logger.error("can't create output folder", e)
 
     def write_json_output(self):
         """Generate JSON output"""
         try:
             with open(self.json_path, "w") as json_output:
                 json.dump(self.states, json_output, sort_keys=True)
-                print("JSON output saved in {}".format(self.json_path))
-        except OSError:
-            print("Error: can't write JSON output")
-            close()
+                self.logger.info("JSON output generated")
+        except OSError as e:
+            self.logger.error("can't write JSON output", e)
 
     def write_html_output(self):
         """Generate HTML output"""
@@ -42,9 +42,8 @@ class Builder():
                 header = header_file.read()
             with open(ROOT_FOLDER + "data/footer.html", "r") as footer_file:
                 footer = footer_file.read()
-        except OSError:
-            print("Error: can't read HTML template files")
-            close()
+        except OSError as e:
+            self.logger.error("can't read template files", e)
         try:
             with open(self.html_path, "w") as index_file:
                 header = header.replace("VERSION", "v{}".format(VERSION))
@@ -75,7 +74,6 @@ class Builder():
                     html_output += "</tr>"
                 html_output += footer
                 index_file.write(html_output)
-                print("HTML output saved in {}".format(self.html_path))
-        except OSError:
-            print("Error: can't write HTML output")
-            close()
+                self.logger.info("HTML output generated")
+        except OSError as e:
+            self.logger.error("can't write HTML output", e)
