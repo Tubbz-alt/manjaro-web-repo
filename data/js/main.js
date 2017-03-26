@@ -65,7 +65,6 @@ $(function () {
                         condition = true;
                     }
                     condition = condition && (filters.country === country);
-                    console.log(branches);
                     if (filters.state !== "all") {
                         if (branches.every(function(x) { return x === "up"; })) {
                             condition = condition && (filters.state === "up")
