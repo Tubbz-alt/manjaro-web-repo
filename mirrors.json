@@ -168,9 +168,10 @@
     },
     {
         "country": "Denmark",
-        "url": "http://www.uex.dk/repos/manjaro/",
+        "url": "https://www.uex.dk/repos/manjaro/",
         "protocols": [
-            "http"
+            "http",
+            "https"
         ]
     },
     {
