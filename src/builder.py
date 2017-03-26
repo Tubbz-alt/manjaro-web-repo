@@ -46,8 +46,8 @@ class Builder():
             self.logger.error("can't read template files", e)
         try:
             with open(self.html_path, "w") as index_file:
-                header = header.replace("VERSION", "v{}".format(VERSION))
-                header = header.replace("DATE", datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
+                header = header.replace("$VERSION", "v{}".format(VERSION))
+                header = header.replace("$DATE", datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
                 html_output = header
                 for state in self.states:
                     if all(branch == 1 for branch in state["branches"]):
