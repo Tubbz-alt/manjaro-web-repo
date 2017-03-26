@@ -30,6 +30,7 @@ $(function () {
         },
         type: "numeric"
     });
+    // Default sorting
     $("#mirrors").tablesorter({sortList: [[1, 0]]});
 
     // Enable tooltips
@@ -54,7 +55,7 @@ $(function () {
                 var protocols = row.cells[2].textContent;
                 if (protocols) {
                     protocols = protocols.split(", ");
-                    // Check filters
+                    var branches = [row.cells[4].className, row.cells[5].className, row.cells[6].className];
                     var condition = false;
                     if (filters.http && protocols.includes("http")) {
                         condition = true;
@@ -64,6 +65,18 @@ $(function () {
                         condition = true;
                     }
                     condition = condition && (filters.country === country);
+                    console.log(branches);
+                    if (filters.state !== "all") {
+                        if (branches.every(function(x) { return x === "up"; })) {
+                            condition = condition && (filters.state === "up")
+                        }
+                        else if (branches.some(function(x) { return x === "up"; })) {
+                            condition = condition && (filters.state === "part")
+                        }
+                        else {
+                            condition = condition && (filters.state === "out")
+                        }
+                    }
                     if (condition) {
                         row.style.display = "table-row";
                     } else {
@@ -76,13 +89,15 @@ $(function () {
 
     // Filters elts
     var country_f = document.getElementById("country-filter");
+    var state_f = document.getElementById("state-filter");
 
     // Filters
     var filters = {
         "http": document.getElementById("http-filter").checked,
         "https": document.getElementById("https-filter").checked,
         "ftp": document.getElementById("ftp-filter").checked,
-        "country": country_f.value
+        "country": country_f.value,
+        "state": state_f.value
     };
 
     // Refresh list at start
@@ -99,6 +114,10 @@ $(function () {
     });
     country_f.addEventListener("change", function () {
         filters.country = country_f.value;
+        updateList(filters);
+    });
+    state_f.addEventListener("change", function () {
+        filters.state = state_f.value;
         updateList(filters);
     });
 });
