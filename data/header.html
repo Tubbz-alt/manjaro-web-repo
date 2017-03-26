@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Manjaro Repository</title>
+    <title>Manjaro Repository - Status of mirrors</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta http-equiv="refresh" content="300">
@@ -23,12 +23,12 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="">Repository State <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="">Status of mirrors <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav pull-xs-right">
                     <li class="nav-item">
-                        <span class="navbar-text">VERSION - DATE</span>
+                        <span class="navbar-text">$VERSION - $DATE</span>
                     </li>
                 </ul>
             </div>
@@ -91,6 +91,12 @@
                     <option value="united_kingdom">United Kingdom</option>
                     <option value="united_states">United States</option>
                     <option value="vietnam">Vietnam</option>
+                </select>
+                <select id="state-filter" class="custom-select">
+                    <option value="all" selected>All states</option>
+                    <option value="up">Up to date</option>
+                    <option value="part">Partially up to date</option>
+                    <option value="out">Out of date</option>
                 </select>
             </div>
         </div>

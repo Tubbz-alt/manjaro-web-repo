@@ -10,6 +10,8 @@ thead, th, td {
     padding: 5rem 20px 1rem 20px;
 }
 
+select:not(:first-of-type) { margin-left: 10px; }
+
 #states { margin-bottom: 10px; }
 
 .state {
