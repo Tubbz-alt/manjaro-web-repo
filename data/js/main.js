@@ -1,7 +1,4 @@
 $(function () {
-    window.onload = function() {
-        location.reload(true);
-    };
     // Javascript is enabled
     document.body.classList.remove("no-js");
 
