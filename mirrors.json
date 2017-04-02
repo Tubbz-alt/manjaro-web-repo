@@ -474,6 +474,14 @@
         ]
     },
     {
+        "country": "Spain",
+        "url": "http://ftp.caliu.cat/manjaro/",
+        "protocols": [
+            "ftp",
+            "http"
+        ]
+    },
+    {
         "country": "Sweden",
         "url": "http://mirror.zetup.net/manjaro/",
         "protocols": [
