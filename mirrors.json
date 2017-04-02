@@ -477,7 +477,6 @@
         "country": "Spain",
         "url": "http://ftp.caliu.cat/manjaro/",
         "protocols": [
-            "ftp",
             "http"
         ]
     },
