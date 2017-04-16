@@ -236,10 +236,11 @@
     },
     {
         "country": "Germany",
-        "url": "http://ftp.halifax.rwth-aachen.de/manjaro/",
+        "url": "https://ftp.halifax.rwth-aachen.de/manjaro/",
         "protocols": [
             "ftp",
-            "http"
+            "http",
+            "https"
         ]
     },
     {
@@ -378,10 +379,11 @@
     },
     {
         "country": "Netherlands",
-        "url": "http://ftp.nluug.nl/pub/os/Linux/distr/manjaro/",
+        "url": "https://ftp.nluug.nl/pub/os/Linux/distr/manjaro/",
         "protocols": [
             "ftp",
-            "http"
+            "http",
+            "https"
         ]
     },
     {
