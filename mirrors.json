@@ -569,16 +569,18 @@
     },
     {
         "country": "United_States",
-        "url": "http://mirror.clarkson.edu/manjaro/",
+        "url": "https://mirror.clarkson.edu/manjaro/",
         "protocols": [
-            "http"
+            "http",
+            "https"
         ]
     },
     {
         "country": "United_States",
-        "url": "http://mirrors.ocf.berkeley.edu/manjaro/",
+        "url": "https://mirrors.ocf.berkeley.edu/manjaro/",
         "protocols": [
-            "http"
+            "http",
+            "https"
         ]
     },
     {
