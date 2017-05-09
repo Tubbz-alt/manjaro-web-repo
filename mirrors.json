@@ -66,9 +66,10 @@
     },
     {
         "country": "Bulgaria",
-        "url": "http://manjaro.ipacct.com/manjaro/",
+        "url": "https://manjaro.ipacct.com/manjaro/",
         "protocols": [
-            "http"
+            "http",
+            "https"
         ]
     },
     {
@@ -108,9 +109,10 @@
     },
     {
         "country": "China",
-        "url": "http://mirrors.ustc.edu.cn/manjaro/",
+        "url": "https://mirrors.ustc.edu.cn/manjaro/",
         "protocols": [
-            "http"
+            "http",
+            "https"
         ]
     },
     {
@@ -145,9 +147,10 @@
     },
     {
         "country": "Costa_Rica",
-        "url": "http://mirrors.ucr.ac.cr/manjaro/",
+        "url": "https://mirrors.ucr.ac.cr/manjaro/",
         "protocols": [
-            "http"
+            "http",
+            "https"
         ]
     },
     {
@@ -342,23 +345,26 @@
     },
     {
         "country": "Italy",
-        "url": "http://manjaro.mirror.garr.it/mirrors/manjaro/",
+        "url": "https://manjaro.mirror.garr.it/mirrors/manjaro/",
         "protocols": [
-            "http"
+            "http",
+            "https"
         ]
     },
     {
         "country": "Italy",
-        "url": "http://ba.mirror.garr.it/mirrors/manjaro/",
+        "url": "https://ba.mirror.garr.it/mirrors/manjaro/",
         "protocols": [
-            "http"
+            "http",
+            "https"
         ]
     },
     {
         "country": "Italy",
-        "url": "http://ct.mirror.garr.it/mirrors/manjaro/",
+        "url": "https://ct.mirror.garr.it/mirrors/manjaro/",
         "protocols": [
-            "http"
+            "http",
+            "https"
         ]
     },
     {
@@ -455,9 +461,10 @@
     },
     {
         "country": "Singapore",
-        "url": "http://download.nus.edu.sg/mirror/manjaro/",
+        "url": "https://download.nus.edu.sg/mirror/manjaro/",
         "protocols": [
-            "http"
+            "http",
+            "https"
         ]
     },
     {
@@ -484,9 +491,10 @@
     },
     {
         "country": "Sweden",
-        "url": "http://mirror.zetup.net/manjaro/",
+        "url": "https://mirror.zetup.net/manjaro/",
         "protocols": [
-            "http"
+            "http",
+            "https"
         ]
     },
     {
