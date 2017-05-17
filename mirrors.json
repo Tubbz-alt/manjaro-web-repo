@@ -81,13 +81,6 @@
     },
     {
         "country": "Canada",
-        "url": "http://manjaro.cybr.ca/",
-        "protocols": [
-            "http"
-        ]
-    },
-    {
-        "country": "Canada",
         "url": "https://ca.mirror.babylon.network/manjaro/",
         "protocols": [
             "https"
@@ -285,6 +278,14 @@
     },
     {
         "country": "Germany",
+        "url": "https://mirror.alpix.eu/manjaro/",
+        "protocols": [
+            "http",
+            "https"
+        ]
+    },
+    {
+        "country": "Germany",
         "url": "https://manjaro-mirror-a.alpix.eu/",
         "protocols": [
             "http",
@@ -294,14 +295,6 @@
     {
         "country": "Germany",
         "url": "http://ftp.rz.tu-bs.de/pub/mirror/manjaro.org/repos/",
-        "protocols": [
-            "ftp",
-            "http"
-        ]
-    },
-    {
-        "country": "Greece",
-        "url": "http://ftp.cc.uoc.gr/mirrors/linux/manjaro/",
         "protocols": [
             "ftp",
             "http"
