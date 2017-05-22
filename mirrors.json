@@ -401,6 +401,14 @@
         ]
     },
     {
+        "country": "Netherlands",
+        "url": "https://manjaro.mirror.wearetriple.com/",
+        "protocols": [
+            "http"
+            "https"
+        ]
+    },
+    {
         "country": "Philippines",
         "url": "http://mirror.rise.ph/manjaro/",
         "protocols": [
