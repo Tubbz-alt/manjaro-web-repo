@@ -38,8 +38,14 @@
         "country": "Belgium",
         "url": "http://ftp.belnet.be/manjaro/",
         "protocols": [
-            "ftp",
             "http"
+        ]
+    },
+    {
+        "country": "Belgium",
+        "url": "http://ftp.belnet.be/mirrors/manjaro/",
+        "protocols": [
+            "ftp"
         ]
     },
     {
@@ -166,7 +172,6 @@
         "country": "Denmark",
         "url": "https://www.uex.dk/repos/manjaro/",
         "protocols": [
-            "http",
             "https"
         ]
     },
@@ -364,7 +369,6 @@
         "country": "Japan",
         "url": "http://ftp.tsukuba.wide.ad.jp/Linux/manjaro/",
         "protocols": [
-            "ftp",
             "http"
         ]
     },
