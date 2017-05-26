@@ -20,6 +20,7 @@ select:not(:first-of-type) { margin-left: 10px; }
     width: 15px;
     height: 15px;
     margin-right: 5px;
+    border-radius: 4px;
 }
 
 .state:not(:first-of-type) { margin-left: 5px; }
