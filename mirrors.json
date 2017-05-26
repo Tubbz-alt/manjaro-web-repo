@@ -322,13 +322,6 @@
         ]
     },
     {
-        "country": "Indonesia",
-        "url": "http://jaran.undip.ac.id/manjaro/",
-        "protocols": [
-            "http"
-        ]
-    },
-    {
         "country": "Ireland",
         "url": "https://ftp.heanet.ie/mirrors/manjaro/",
         "protocols": [
