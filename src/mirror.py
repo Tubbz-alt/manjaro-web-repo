@@ -32,27 +32,20 @@ class Mirror():
     def read_state_file(self, hashes):
         """Read infos from state file"""
         if self.state_file:
-            pos = self.state_file.find("date=")
-            if pos >= 0:
-                mirror_date = datetime.datetime.strptime(
-                    self.state_file[pos+5:pos+24],
-                    "%Y-%m-%dT%H:%M:%S")
-                seconds = (datetime.datetime.utcnow() - mirror_date).total_seconds()
-                minutes = seconds // 60
-                elapsed_hours = minutes // 60
-                elapsed_minutes = minutes % 60
-                self.last_sync = "{}:{}".format(
-                    str(int(elapsed_hours)).zfill(2),
-                    str(int(elapsed_minutes)).zfill(2))
+            mirror_date = self.state_file.split("date=", 1)[1]
+            mirror_date = datetime.datetime.strptime(mirror_date, "%Y-%m-%dT%H:%M:%SZ")
+            seconds = (datetime.datetime.utcnow() - mirror_date).total_seconds()
+            minutes = seconds // 60
+            elapsed_hours = str(int(minutes // 60)).zfill(2)
+            elapsed_minutes = str(int(minutes % 60)).zfill(2)
+            self.last_sync = "{}:{}".format(elapsed_hours, elapsed_minutes)
             for i, branch in enumerate(BRANCHES):
                 url = self.url + branch + "/state"
                 try:
                     with urllib.request.urlopen(url, timeout=10) as response:
                         content = response.read().decode("utf-8")
-                        pos = content.find("state=")
-                        if pos >= 0:
-                            branch_hash = content[pos+6:pos+46]
-                            self.branches.append(int(branch_hash == hashes[i]))
+                        branch_hash = self.state_file.split("state=", 1)[1].split('\n')[0]
+                        self.branches.append(int(branch_hash == hashes[i]))
                 except urllib.error.URLError as e:
                     self.logger.error("{}: can't read hash from state file".format(url), e, False)
         if not self.last_sync:
