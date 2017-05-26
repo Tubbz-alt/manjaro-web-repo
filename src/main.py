@@ -40,7 +40,7 @@ class StatusChecker():
                     content = branch_state.read()
                     pos = content.find("state=")
                     if pos >= 0:
-                        self.hashes.append(content[pos+6:pos+46])
+                        self.hashes.append(content[pos + 6:pos + 46])
             except OSError:
                 pass
         if len(self.hashes) < len(BRANCHES):
