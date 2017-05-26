@@ -5,7 +5,7 @@ import datetime
 import os
 
 from logger import Logger
-from conf import BRANCHES, VERSION, ROOT_FOLDER, OUTPUT_FOLDER
+from conf import BRANCHES, ROOT_FOLDER, OUTPUT_FOLDER
 
 
 class Builder():
