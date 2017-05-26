@@ -397,7 +397,7 @@
         "country": "Netherlands",
         "url": "https://manjaro.mirror.wearetriple.com/",
         "protocols": [
-            "http"
+            "http",
             "https"
         ]
     },
