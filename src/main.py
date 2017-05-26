@@ -20,6 +20,7 @@ class StatusChecker():
         self.mirrors = list()
         self.hashes = list()
         self.states = list()
+        self.countries = list()
         self.logger.info("manjaro-web-repo is starting")
 
     def get_mirrors(self):
@@ -51,6 +52,8 @@ class StatusChecker():
         for i, mirror in enumerate(self.mirrors):
             print("({}/{}): {}".format(i + 1, nb, mirror["url"]))
             mirror = Mirror(mirror)
+            if not mirror.country in self.countries:
+                self.countries.append(mirror.country)
             mirror.get_state_file()
             mirror.read_state_file(self.hashes)
             mirror_status = {
@@ -68,7 +71,7 @@ if __name__ == "__main__":
     status_checker.get_mirrors()
     status_checker.get_hashes()
     status_checker.check_mirrors()
-    builder = Builder(status_checker.states)
+    builder = Builder(status_checker.states, status_checker.countries)
     builder.write_json_output()
     builder.write_html_output()
     status_checker.logger.close()

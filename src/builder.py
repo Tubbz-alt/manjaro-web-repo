@@ -11,9 +11,10 @@ from conf import BRANCHES, ROOT_FOLDER, OUTPUT_FOLDER
 class Builder():
     """Handle generation of output files"""
 
-    def __init__(self, states):
+    def __init__(self, states, countries):
         self.logger = Logger()
         self.states = states
+        self.countries = countries
         self.check_folder()
         self.json_path = ROOT_FOLDER + OUTPUT_FOLDER + "status.json"
         self.html_path = ROOT_FOLDER + OUTPUT_FOLDER + "index.html"
@@ -47,6 +48,10 @@ class Builder():
         try:
             with open(self.html_path, "w") as index_file:
                 header = header.replace("$DATE", datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
+                countries_options = ""
+                for country in self.countries:
+                    countries_options += "<option value=\"{}\">{}</option>".format(country.lower(), country.replace("_", " "))
+                header = header.replace("$COUNTRIES", countries_options)
                 html_output = header
                 for state in self.states:
                     if all(branch == 1 for branch in state["branches"]):
