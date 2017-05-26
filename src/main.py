@@ -72,6 +72,5 @@ if __name__ == "__main__":
     status_checker.get_hashes()
     status_checker.check_mirrors()
     builder = Builder(status_checker.states, status_checker.countries)
-    builder.write_json_output()
-    builder.write_html_output()
+    builder.generate_output()
     status_checker.logger.close()

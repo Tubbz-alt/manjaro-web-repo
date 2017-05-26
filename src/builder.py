@@ -27,6 +27,11 @@ class Builder():
         except OSError as e:
             self.logger.error("can't create output folder", e)
 
+    def generate_output(self):
+        """Generate all output files"""
+        self.write_json_output()
+        self.write_html_output()
+
     def write_json_output(self):
         """Generate JSON output"""
         try:
