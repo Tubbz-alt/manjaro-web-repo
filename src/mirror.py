@@ -44,7 +44,7 @@ class Mirror():
                 try:
                     with urllib.request.urlopen(url, timeout=10) as state_file:
                         content = state_file.read().decode("utf-8")
-                        branch_hash = self.state_file.split("state=", 1)[1].split('\n')[0]
+                        branch_hash = state_file.split("state=", 1)[1].split('\n')[0]
                         self.branches.append(int(branch_hash == hashes[i]))
                 except urllib.error.URLError as e:
                     self.logger.error("{}: can't read hash from state file".format(url), e, False)
