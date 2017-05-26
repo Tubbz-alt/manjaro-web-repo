@@ -43,7 +43,7 @@
     },
     {
         "country": "Belgium",
-        "url": "http://ftp.belnet.be/mirrors/manjaro/",
+        "url": "ftp://ftp.belnet.be/mirrors/manjaro/",
         "protocols": [
             "ftp"
         ]
