@@ -52,13 +52,17 @@ class Builder():
             self.logger.error("can't read template files", e)
         try:
             with open(self.html_path, "w") as index_file:
+                # Set date
                 header = header.replace("$DATE", datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
+                # Fill countries dropdown
                 countries_options = ""
                 for country in self.countries:
                     countries_options += "<option value=\"{}\">{}</option>".format(country.lower(), country.replace("_", " "))
                 header = header.replace("$COUNTRIES", countries_options)
                 html_output = header
+                # For each mirror
                 for state in self.states:
+                    # Set color of row
                     if all(branch == 1 for branch in state["branches"]):
                         color = "success"
                     elif any(branch == 1 for branch in state["branches"]):
@@ -66,15 +70,20 @@ class Builder():
                     else:
                         color = "danger"
                     html_output += "<tr class=\"table-{}\">".format(color)
+                    # Pretiffy URL
                     displayed_url = state["url"].split("//")[1][:-1]
                     if len(state["url"]) > 50:
                         displayed_url = state["url"][:47] + "..."
                     html_output += '<td><a href="{url}" data-toggle="tooltip" data-placement="top" title="{url}">{durl}</a></td>'.format(url=state["url"], durl=displayed_url)
+                    # Pretiffy country
                     html_output += "<td>{}</td>".format(state["country"].replace("_", " "))
+                    # Set list of protocols
                     html_output += "<td>{}</td>".format(", ".join(state["protocols"]))
+                    # Set last sync
                     if state["last_sync"] == -1:
                         state["last_sync"] = "N/A"
                     html_output += "<td>{}</td>".format(state["last_sync"])
+                    # Set list of states for each branch
                     icon = '<td class="{name}"><img src="../data/img/{name}.png" data-toggle="tooltip" data-placement="top" alt="{desc}" title="{desc}"></td>'
                     for i, branch in enumerate(BRANCHES):
                         if state["branches"][i] == 1:
