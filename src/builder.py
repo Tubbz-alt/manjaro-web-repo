@@ -73,7 +73,7 @@ class Builder():
                     # Pretiffy URL
                     displayed_url = state["url"].split("//")[1][:-1]
                     if len(state["url"]) > 50:
-                        displayed_url = state["url"][:47] + "..."
+                        displayed_url = displayed_url[:47] + "..."
                     html_output += '<td><a href="{url}" data-toggle="tooltip" data-placement="top" title="{url}">{durl}</a></td>'.format(url=state["url"], durl=displayed_url)
                     # Pretiffy country
                     html_output += "<td>{}</td>".format(state["country"].replace("_", " "))
