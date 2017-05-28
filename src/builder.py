@@ -66,7 +66,10 @@ class Builder():
                     else:
                         color = "danger"
                     html_output += "<tr class=\"table-{}\">".format(color)
-                    html_output += "<td><a href=\"{url}\">{url}</a></td>".format(url=state["url"])
+                    displayed_url = state["url"].split("//")[1][:-1]
+                    if len(state["url"]) > 50:
+                        displayed_url = state["url"][:47] + "..."
+                    html_output += '<td><a href="{url}" data-toggle="tooltip" data-placement="top" title="{url}">{durl}</a></td>'.format(url=state["url"], durl=displayed_url)
                     html_output += "<td>{}</td>".format(state["country"].replace("_", " "))
                     html_output += "<td>{}</td>".format(", ".join(state["protocols"]))
                     if state["last_sync"] == -1:
