@@ -292,6 +292,13 @@
         ]
     },
     {
+        "country": "Germany",
+        "url": "https://manjaro.ieji.de/",
+        "protocols": [
+            "https"
+        ]
+    },
+    {
         "country": "Hungary",
         "url": "http://mirror.infotronik.hu/mirrors/pub/manjaro/",
         "protocols": [
