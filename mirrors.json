@@ -300,7 +300,7 @@
     },
     {
         "country": "Germany",
-        "url": "https://babyname.tips/mirrors/manjaro/",
+        "url": "http://babyname.tips/mirrors/manjaro/",
         "protocols": [
             "http"
         ]
