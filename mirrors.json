@@ -299,6 +299,13 @@
         ]
     },
     {
+        "country": "Germany",
+        "url": "https://babyname.tips/mirrors/manjaro/",
+        "protocols": [
+            "http"
+        ]
+    },
+    {
         "country": "Hungary",
         "url": "http://mirror.infotronik.hu/mirrors/pub/manjaro/",
         "protocols": [
