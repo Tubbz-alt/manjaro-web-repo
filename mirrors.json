@@ -423,13 +423,6 @@
         ]
     },
     {
-        "country": "Portugal",
-        "url": "http://manjaro.barata.pt/",
-        "protocols": [
-            "http"
-        ]
-    },
-    {
         "country": "Romania",
         "url": "http://mirrors.serverhost.ro/manjaro/packages/",
         "protocols": [
