@@ -8,7 +8,7 @@
     },
     {
         "country": "Australia",
-        "url": "http://manjaro.uberglobalmirror.com/",
+        "url": "http://manjaro.melbourneitmirror.net/",
         "protocols": [
             "http"
         ]
