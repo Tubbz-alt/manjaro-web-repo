@@ -371,6 +371,13 @@
         ]
     },
     {
+        "country": "Luxembourg",
+        "url": "http://kibo.remi.lu/",
+        "protocols": [
+            "http"
+        ]
+    },
+    {
         "country": "Netherlands",
         "url": "https://ftp.nluug.nl/pub/os/Linux/distr/manjaro/",
         "protocols": [
