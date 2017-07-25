@@ -219,6 +219,13 @@
         ]
     },
     {
+        "country": "France",
+        "url": "http://kibo.remi.lu/",
+        "protocols": [
+            "http"
+        ]
+    },
+    {
         "country": "Germany",
         "url": "http://mirror.ragenetwork.de/manjaro/",
         "protocols": [
@@ -367,13 +374,6 @@
         "url": "http://ftp.riken.jp/Linux/manjaro/",
         "protocols": [
             "ftp",
-            "http"
-        ]
-    },
-    {
-        "country": "Luxembourg",
-        "url": "http://kibo.remi.lu/",
-        "protocols": [
             "http"
         ]
     },
