@@ -560,13 +560,6 @@
     },
     {
         "country": "United_States",
-        "url": "http://mirror.nexcess.net/manjaro/",
-        "protocols": [
-            "http"
-        ]
-    },
-    {
-        "country": "United_States",
         "url": "http://distro.ibiblio.org/manjaro/",
         "protocols": [
             "http"
