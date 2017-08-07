@@ -580,6 +580,13 @@
         ]
     },
     {
+        "country": "United_States",
+        "url": "https://mirror.math.princeton.edu/pub/manjaro/",
+        "protocols": [
+            "https"
+        ]
+    },
+    {
         "country": "Vietnam",
         "url": "https://mirror.freedif.org/Manjaro/",
         "protocols": [
