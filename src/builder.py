@@ -64,12 +64,12 @@ class Builder():
                 for state in self.states:
                     # Set color of row
                     if all(branch == 1 for branch in state["branches"]):
-                        color = "success"
+                        color = "green"
                     elif any(branch == 1 for branch in state["branches"]):
-                        color = "warning"
+                        color = "yellow"
                     else:
-                        color = "danger"
-                    html_output += "<tr class=\"table-{}\">".format(color)
+                        color = "red"
+                    html_output += "<tr class=\"{}\">".format(color)
                     # Pretiffy URL
                     displayed_url = state["url"].split("//")[1][:-1]
                     if len(state["url"]) > 50:

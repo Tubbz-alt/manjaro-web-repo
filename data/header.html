@@ -6,27 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta http-equiv="refresh" content="300">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link href="../data/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="../data/css/style.min.css" rel="stylesheet">
     <link rel="icon" href="../data/img/manjaro.png">
 </head>
 <body class="no-js">
-    <nav class="navbar navbar-toggleable-md navbar-light fixed-top bg-faded">
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
         <div class="container">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <a class="navbar-brand" href="">
                 <img src="../data/img/manjaro.png" width="30" height="30" class="d-inline-block align-top" alt="">
                 Manjaro Repository
             </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="">Status of mirrors <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav pull-xs-right">
+                <ul class="navbar-nav pull-xs-right">
                     <li class="nav-item">
                         <span class="navbar-text">Generated on $DATE</span>
                     </li>
@@ -67,9 +67,9 @@
         </div>
         <hr>
         <div id="states">
-            <div class="state" id="green"></div> Up to date
-            <div class="state" id="yellow"></div> Partially up to date
-            <div class="state" id="red"></div> Out of date
+            <div class="state green"></div> Up to date
+            <div class="state yellow"></div> Partially up to date
+            <div class="state red"></div> Out of date
         </div>
 
         <table id="mirrors" class="table table-sm">

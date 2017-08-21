@@ -25,11 +25,11 @@ select:not(:first-of-type) { margin-left: 10px; }
 
 .state:not(:first-of-type) { margin-left: 5px; }
 
-#green { background-color: #dff0d8; }
+.green  { background-color: #dff0d8; }
 
-#yellow { background-color: #fcf8e3; }
+.yellow { background-color: #fcf8e3; }
 
-#red { background-color: #f2dede; }
+.red { background-color: #f2dede; }
 
 .tablesorter-header {
     position: relative;
