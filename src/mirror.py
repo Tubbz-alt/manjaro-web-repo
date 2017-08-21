@@ -26,7 +26,7 @@ class Mirror():
         try:
             with urllib.request.urlopen(self.url + "state", timeout=10) as state_file:
                 self.state_file = state_file.read().decode("utf-8")
-        except urllib.error.URLError as e:
+        except (urllib.error.URLError, socket.timeout) as e:
             self.logger.error("{}: can't read state file".format(self.url), e, False)
 
     def read_state_file(self, hashes):
@@ -46,7 +46,7 @@ class Mirror():
                         state_file = state_file.read().decode("utf-8")
                         branch_hash = state_file.split("state=", 1)[1].split('\n')[0]
                         self.branches.append(int(branch_hash == hashes[i]))
-                except urllib.error.URLError as e:
+                except (urllib.error.URLError, socket.timeout) as e:
                     self.logger.error("{}: can't read hash from state file".format(url), e, False)
         if not self.last_sync:
             self.last_sync = -1

@@ -29,7 +29,7 @@ class StatusChecker():
             with urllib.request.urlopen(MIRRORS_URL, timeout=10) as mirrors_file:
                 self.mirrors = json.loads(mirrors_file.read().decode("utf-8"),
                                           object_pairs_hook=OrderedDict)
-        except urllib.error.URLError as e:
+        except (urllib.error.URLError, socket.timeout) as e:
             self.logger.error("can't fetch list of mirrors", e)
 
     def get_hashes(self):
