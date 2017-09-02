@@ -56,13 +56,6 @@
         ]
     },
     {
-        "country": "Brasil",
-        "url": "http://linorg.usp.br/manjaro/",
-        "protocols": [
-            "http"
-        ]
-    },
-    {
         "country": "Bulgaria",
         "url": "https://mirrors.netix.net/manjaro/",
         "protocols": [
@@ -84,22 +77,8 @@
         ]
     },
     {
-        "country": "Canada",
-        "url": "https://ca.mirror.babylon.network/manjaro/",
-        "protocols": [
-            "https"
-        ]
-    },
-    {
         "country": "Chile",
         "url": "http://manjaro.dcc.uchile.cl/",
-        "protocols": [
-            "http"
-        ]
-    },
-    {
-        "country": "Chile",
-        "url": "http://doge.ing.puc.cl/Mirrors/Manjaro/",
         "protocols": [
             "http"
         ]
@@ -300,13 +279,6 @@
     },
     {
         "country": "Germany",
-        "url": "https://manjaro.ieji.de/",
-        "protocols": [
-            "https"
-        ]
-    },
-    {
-        "country": "Germany",
         "url": "http://babyname.tips/mirrors/manjaro/",
         "protocols": [
             "http"
@@ -410,13 +382,6 @@
     {
         "country": "Philippines",
         "url": "http://mirror.rise.ph/manjaro/",
-        "protocols": [
-            "http"
-        ]
-    },
-    {
-        "country": "Poland",
-        "url": "http://mirror.chmuri.net/manjaro/",
         "protocols": [
             "http"
         ]
@@ -586,11 +551,4 @@
             "https"
         ]
     },
-    {
-        "country": "Vietnam",
-        "url": "https://mirror.freedif.org/Manjaro/",
-        "protocols": [
-            "https"
-        ]
-    }
 ]
