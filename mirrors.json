@@ -511,13 +511,6 @@
     },
     {
         "country": "United_States",
-        "url": "http://mirror.jmu.edu/manjaro/",
-        "protocols": [
-            "http"
-        ]
-    },
-    {
-        "country": "United_States",
         "url": "http://mirror.solarvps.com/manjaro/",
         "protocols": [
             "http"
