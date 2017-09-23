@@ -77,6 +77,13 @@
         ]
     },
     {
+        "country": "Canada",
+        "url": "https://osmirror.org/manjaro/",
+        "protocols": [
+            "https"
+        ]
+    },
+    {
         "country": "Chile",
         "url": "http://manjaro.dcc.uchile.cl/",
         "protocols": [
