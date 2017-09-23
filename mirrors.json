@@ -156,23 +156,9 @@
     },
     {
         "country": "Ecuador",
-        "url": "https://mirror.uta.edu.ec/manjaro/",
-        "protocols": [
-            "https"
-        ]
-    },
-    {
-        "country": "Ecuador",
         "url": "https://mirror.espoch.edu.ec/manjaro/",
         "protocols": [
             "https"
-        ]
-    },
-    {
-        "country": "France",
-        "url": "http://manjarolinux.polymorf.fr/",
-        "protocols": [
-            "http"
         ]
     },
     {
