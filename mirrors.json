@@ -490,13 +490,6 @@
     },
     {
         "country": "United_Kingdom",
-        "url": "http://mirror.catn.com/pub/manjaro/",
-        "protocols": [
-            "http"
-        ]
-    },
-    {
-        "country": "United_Kingdom",
         "url": "http://manjaro.mirrors.uk2.net/",
         "protocols": [
             "http"
