@@ -99,14 +99,6 @@
     },
     {
         "country": "China",
-        "url": "http://ftp.cuhk.edu.hk/pub/Linux/manjaro/",
-        "protocols": [
-            "ftp",
-            "http"
-        ]
-    },
-    {
-        "country": "China",
         "url": "http://mirrors.tuna.tsinghua.edu.cn/manjaro/",
         "protocols": [
             "http"
@@ -274,6 +266,14 @@
         "country": "Germany",
         "url": "http://babyname.tips/mirrors/manjaro/",
         "protocols": [
+            "http"
+        ]
+    },
+    {
+        "country": "Hong_Kong",
+        "url": "http://ftp.cuhk.edu.hk/pub/Linux/manjaro/",
+        "protocols": [
+            "ftp",
             "http"
         ]
     },
