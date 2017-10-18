@@ -373,6 +373,13 @@
         ]
     },
     {
+        "country": "Netherlands",
+        "url": "https://mirror.koddos.net/manjaro/",
+        "protocols": [
+            "https"
+        ]
+    },
+    {
         "country": "Philippines",
         "url": "http://mirror.rise.ph/manjaro/",
         "protocols": [
