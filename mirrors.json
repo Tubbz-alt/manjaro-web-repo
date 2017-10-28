@@ -424,6 +424,13 @@
         ]
     },
     {
+        "country": "Russia",
+        "url": "http://mirror.truenetwork.ru/manjaro/",
+        "protocols": [
+            "http"
+        ]
+    },
+    {
         "country": "Singapore",
         "url": "https://download.nus.edu.sg/mirror/manjaro/",
         "protocols": [
