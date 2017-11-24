@@ -112,6 +112,14 @@
         ]
     },
     {
+        "country": "China",
+        "url": "https://mirrors.shuosc.org/manjaro/",
+        "protocols": [
+            "ftp",
+            "https"
+        ]
+    },
+    {
         "country": "Colombia",
         "url": "http://mirror.edatel.net.co/manjaro/",
         "protocols": [
