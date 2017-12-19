@@ -404,6 +404,21 @@
         ]
     },
     {
+        "country": "Poland",
+        "url": "http://mirror.chmuri.net/manjaro/",
+        "protocols": [
+            "http"
+        ]
+    },
+    {
+        "country": "Poland",
+        "url": "https://mirror.tuchola-dc.pl/manjaro/",
+        "protocols": [
+            "https",
+            "http"
+        ]
+    },
+    {
         "country": "Portugal",
         "url": "http://ftp.dei.uc.pt/pub/linux/manjaro/",
         "protocols": [
