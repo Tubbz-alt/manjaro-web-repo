@@ -316,6 +316,14 @@
         ]
     },
     {
+        "country": "Iran",
+        "url": "https://repo.sadjad.ac.ir/manjaro/",
+        "protocols": [
+            "https",
+            "http"
+        ]
+    },
+    {
         "country": "Ireland",
         "url": "https://ftp.heanet.ie/mirrors/manjaro/",
         "protocols": [
