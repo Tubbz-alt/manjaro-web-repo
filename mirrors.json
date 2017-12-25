@@ -257,13 +257,6 @@
     },
     {
         "country": "Germany",
-        "url": "https://manjaro-mirror-a.alpix.eu/",
-        "protocols": [
-            "https"
-        ]
-    },
-    {
-        "country": "Germany",
         "url": "http://ftp.rz.tu-bs.de/pub/mirror/manjaro.org/repos/",
         "protocols": [
             "ftp",
