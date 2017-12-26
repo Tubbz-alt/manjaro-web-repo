@@ -36,15 +36,9 @@
     },
     {
         "country": "Belgium",
-        "url": "http://ftp.belnet.be/manjaro/",
+        "url": "http://ftp.belnet.be/mirrors/manjaro/",
         "protocols": [
-            "http"
-        ]
-    },
-    {
-        "country": "Belgium",
-        "url": "ftp://ftp.belnet.be/mirrors/manjaro/",
-        "protocols": [
+            "http",
             "ftp"
         ]
     },
@@ -423,29 +417,14 @@
         "country": "Portugal",
         "url": "http://ftp.dei.uc.pt/pub/linux/manjaro/",
         "protocols": [
-            "ftp",
-            "http"
-        ]
-    },
-    {
-        "country": "Portugal",
-        "url": "http://manjaro.barata.pt/",
-        "protocols": [
-            "http"
+            "http",
+            "ftp"
         ]
     },
     {
         "country": "Romania",
         "url": "http://mirrors.serverhost.ro/manjaro/packages/",
         "protocols": [
-            "http"
-        ]
-    },
-    {
-        "country": "Romania",
-        "url": "http://ftp.lug.ro/manjaro/",
-        "protocols": [
-            "ftp",
             "http"
         ]
     },
