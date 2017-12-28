@@ -28,6 +28,13 @@
         ]
     },
     {
+        "country": "Bangladesh",
+        "url": "http://mirror.xeonbd.com/manjaro/",
+        "protocols": [
+            "http"
+        ]
+    },
+    {
         "country": "Belarus",
         "url": "http://mirror.datacenter.by/pub/mirrors/manjaro/",
         "protocols": [
