@@ -93,6 +93,15 @@
     },
     {
         "country": "China",
+        "url": "https://mirrors.shu.edu.cn/manjaro/",
+        "protocols": [
+            "https",
+            "http",
+            "ftp"
+        ]
+    },
+    {
+        "country": "China",
         "url": "https://mirrors.ustc.edu.cn/manjaro/",
         "protocols": [
             "https"
