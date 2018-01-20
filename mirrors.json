@@ -439,7 +439,7 @@
     },
       {
         "country": "Portugal",
-        "url": "http://manjaro.barata.pt",
+        "url": "http://manjaro.barata.pt/",
         "protocols": [
             "http"
         ]
