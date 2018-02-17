@@ -275,13 +275,6 @@
     },
     {
         "country": "Germany",
-        "url": "http://babyname.tips/mirrors/manjaro/",
-        "protocols": [
-            "http"
-        ]
-    },
-    {
-        "country": "Germany",
         "url": "https://mirror.philpot.de/manjaro/",
         "protocols": [
             "http",
