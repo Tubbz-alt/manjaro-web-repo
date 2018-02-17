@@ -281,6 +281,14 @@
         ]
     },
     {
+        "country": "Germany",
+        "url": "https://mirror.philpot.de/manjaro/",
+        "protocols": [
+            "http",
+            "https"
+        ]
+    }
+    {
         "country": "Greece",
         "url": "https://ftp.cc.uoc.gr/mirrors/linux/manjaro/",
         "protocols": [
