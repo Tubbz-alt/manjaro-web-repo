@@ -195,13 +195,6 @@
     },
     {
         "country": "France",
-        "url": "https://fr.mirror.babylon.network/manjaro/",
-        "protocols": [
-            "https"
-        ]
-    },
-    {
-        "country": "France",
         "url": "http://kibo.remi.lu/",
         "protocols": [
             "http"
@@ -394,13 +387,6 @@
         "protocols": [
             "ftp",
             "http"
-        ]
-    },
-    {
-        "country": "Netherlands",
-        "url": "https://nl.mirror.babylon.network/manjaro/",
-        "protocols": [
-            "https"
         ]
     },
     {
