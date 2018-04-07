@@ -57,6 +57,27 @@
         ]
     },
     {
+        "country": "Brazil",
+        "url": "https://manjaro.c3sl.ufpr.br/",
+        "protocols": [
+            "https"
+        ]
+    },
+    {
+        "country": "Brazil",
+        "url": "http://pet.inf.ufsc.br/mirrors/manjarolinux/",
+        "protocols": [
+            "http"
+        ]
+    },
+    {
+        "country": "Brazil",
+        "url": "http://linorg.usp.br/manjaro/",
+        "protocols": [
+            "http"
+        ]
+    },
+    {
         "country": "Bulgaria",
         "url": "https://mirrors.netix.net/manjaro/",
         "protocols": [
