@@ -14,13 +14,6 @@
         ]
     },
     {
-        "country": "Australia",
-        "url": "http://manjaro.mirror.serversaustralia.com.au/",
-        "protocols": [
-            "http"
-        ]
-    },
-    {
         "country": "Austria",
         "url": "http://mirror.inode.at/manjaro/",
         "protocols": [
@@ -151,13 +144,6 @@
         ]
     },
     {
-        "country": "Colombia",
-        "url": "http://mirror.edatel.net.co/manjaro/",
-        "protocols": [
-            "http"
-        ]
-    },
-    {
         "country": "Costa_Rica",
         "url": "https://mirrors.ucr.ac.cr/manjaro/",
         "protocols": [
@@ -197,13 +183,6 @@
         "url": "https://mirror.espoch.edu.ec/manjaro/",
         "protocols": [
             "https"
-        ]
-    },
-    {
-        "country": "France",
-        "url": "http://mirror.lignux.com/manjaro/",
-        "protocols": [
-            "http"
         ]
     },
     {
@@ -261,13 +240,6 @@
     {
         "country": "Germany",
         "url": "https://repo.rhindon.net/manjaro/",
-        "protocols": [
-            "https"
-        ]
-    },
-    {
-        "country": "Germany",
-        "url": "https://mirror.alpix.eu/manjaro/",
         "protocols": [
             "https"
         ]
@@ -372,15 +344,6 @@
     },
     {
         "country": "Netherlands",
-        "url": "https://mirror.neostrada.nl/manjaro/",
-        "protocols": [
-            "ftp",
-            "http",
-            "https"
-        ]
-    },
-    {
-        "country": "Netherlands",
         "url": "https://ftp.nluug.nl/pub/os/Linux/distr/manjaro/",
         "protocols": [
             "ftp",
@@ -393,13 +356,6 @@
         "protocols": [
             "ftp",
             "http"
-        ]
-    },
-    {
-        "country": "Netherlands",
-        "url": "https://manjaro.mirror.wearetriple.com/",
-        "protocols": [
-            "https"
         ]
     },
     {
@@ -432,14 +388,6 @@
         ]
     },
     {
-        "country": "Portugal",
-        "url": "http://ftp.dei.uc.pt/pub/linux/manjaro/",
-        "protocols": [
-            "http",
-            "ftp"
-        ]
-    },
-      {
         "country": "Portugal",
         "url": "http://manjaro.barata.pt/",
         "protocols": [
