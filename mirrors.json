@@ -335,14 +335,6 @@
         ]
     },
     {
-        "country": "Ireland",
-        "url": "https://ftp.heanet.ie/mirrors/manjaro/",
-        "protocols": [
-            "ftp",
-            "https"
-        ]
-    },
-    {
         "country": "Italy",
         "url": "https://manjaro.mirror.garr.it/mirrors/manjaro/",
         "protocols": [
