@@ -267,13 +267,6 @@
     },
     {
         "country": "Germany",
-        "url": "https://repo.stdout.net/manjaro/",
-        "protocols": [
-            "https"
-        ]
-    },
-    {
-        "country": "Germany",
         "url": "https://mirror.alpix.eu/manjaro/",
         "protocols": [
             "https"
