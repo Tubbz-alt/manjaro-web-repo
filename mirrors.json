@@ -563,13 +563,6 @@
     },
     {
         "country": "United_States",
-        "url": "http://mirror.solarvps.com/manjaro/",
-        "protocols": [
-            "http"
-        ]
-    },
-    {
-        "country": "United_States",
         "url": "http://distro.ibiblio.org/manjaro/",
         "protocols": [
             "http"
