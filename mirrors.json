@@ -261,6 +261,14 @@
         ]
     },
     {
+        "country": "Germany",
+        "url": "https://manjaro.moson.eu/",
+        "protocols": [
+            "http",
+            "https"
+        ]
+    },
+    {
         "country": "Greece",
         "url": "https://ftp.cc.uoc.gr/mirrors/linux/manjaro/",
         "protocols": [
