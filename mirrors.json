@@ -144,6 +144,13 @@
         ]
     },
     {
+        "country": "China",
+        "url": "https://mirrors.sjtug.sjtu.edu.cn/manjaro",
+        "protocols": [
+            "https"
+        ]
+    },
+    {
         "country": "Costa_Rica",
         "url": "https://mirrors.ucr.ac.cr/manjaro/",
         "protocols": [
