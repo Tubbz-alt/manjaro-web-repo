@@ -158,6 +158,13 @@
         ]
     },
     {
+        "country": "Colombia",
+        "url": "http://mirror.upb.edu.co/manjaro",
+        "protocols": [
+            "http"
+        ]
+    },
+    {
         "country": "Czech",
         "url": "https://mirror.dkm.cz/manjaro/",
         "protocols": [
