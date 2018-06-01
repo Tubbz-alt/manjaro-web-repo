@@ -71,6 +71,13 @@
         ]
     },
     {
+        "country": "Brazil",
+        "url": "http://mirror.ufam.edu.br/manjaro/",
+        "protocols": [
+            "http"
+        ]
+    },
+    {
         "country": "Bulgaria",
         "url": "https://mirrors.netix.net/manjaro/",
         "protocols": [
