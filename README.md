@@ -1,4 +1,5 @@
-manjaro-web-repo
-================
+This repo has been archived. Our code is now hosted at
 
-Manjaro Mirror Check
+https://gitlab.manjaro.org/
+
+See you there!
